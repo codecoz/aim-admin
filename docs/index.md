@@ -3,7 +3,7 @@ Welcome to AimAdmin, the ultimate Laravel admin panel plugin engineered to eleva
 
 # Table of Contents
 
-[Design](contents/design.md)
-[Crudboard](contents/crudboard.md)
-[Form](contents/form.md)
-[Filter](contents/filter.md)
+- [Design](contents/design.md)
+- [Crudboard](contents/crudboard.md)
+- [Form](contents/form.md)
+- [Filter](contents/filter.md)

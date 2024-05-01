@@ -1,0 +1,15 @@
+.back-to-top {
+    transition: opacity 0.5s ease-out, visibility 0.5s;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+}

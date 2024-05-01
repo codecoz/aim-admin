@@ -1,0 +1,37 @@
+<?php declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use Illuminate\Support\Collection;
+use App\Models\{{ tableModel }};
+use {{ repoContractsNamespace }}\{{ class }}Interface;
+use CodeCoz\AimAdmin\Contracts\Service\CrudBoard\CrudGridLoaderInterface;
+use CodeCoz\AimAdmin\Repository\AbstractAimAdminRepository;
+
+class {{ class }}  extends AbstractAimAdminRepository implements {{ class }}Interface, CrudGridLoaderInterface
+{
+
+   public function getModelFqcn(): string
+   {
+     return {{ tableModel }}::class;
+   }
+
+   public function getGridData(array $filters = []) : iterable
+   {
+       return $this->all();
+   }
+
+   public function applyFilterData(Collection $data, array $filters): Collection
+   {
+       foreach ($filters as $field => $value) {
+           if ($value !== null) {
+               $data = $data->filter(function ($item) use ($field, $value) {
+                   return $item[$field] !== null && stripos((string)$item[$field], (string)$value) !== false;
+               });
+           }
+       }
+       return $data;
+
+   }
+
+}

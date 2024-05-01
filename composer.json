@@ -1,0 +1,49 @@
+{
+    "name": "codecoz/aim-admin",
+    "description": "Welcome to AimAdmin, the ultimate Laravel admin panel plugin engineered to elevate developers' productivity and streamline development workflows.",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "CodeCoz",
+            "email": "contact@codecoz.com",
+            "homepage": "https://codecoz.com"
+        }
+    ],
+    "homepage": "https://codecoz.com",
+    "keywords": [
+        "Laravel",
+        "Aim",
+        "Admin"
+    ],
+    "require": {
+        "illuminate/support": "~10|~11",
+        "lcobucci/clock": "~3.2",
+        "lcobucci/jwt": "~5.2.0",
+        "onelogin/php-saml": "^4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~9.0",
+        "orchestra/testbench": "~7"
+    },
+    "autoload": {
+        "psr-4": {
+            "CodeCoz\\AimAdmin\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CodeCoz\\AimAdmin\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "CodeCoz\\AimAdmin\\AdminServiceProvider"
+            ],
+            "aliases": {
+                "Admin": "CodeCoz\\AimAdmin\\Facades\\Admin"
+            }
+        }
+    }
+}

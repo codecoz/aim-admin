@@ -1,0 +1,109 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Http\Request;
+use CodeCoz\AimAdmin\Controller\AbstractNativeController;
+use App\Contracts\Repositories\{{ cleanName }}RepositoryInterface;
+use Illuminate\Http\RedirectResponse;
+use CodeCoz\AimAdmin\Field\IdField;
+use App\Contracts\Services\{{ cleanName }}ServiceInterface;
+use CodeCoz\AimAdmin\Field\TextField;
+
+class {{ class }} extends AbstractNativeController
+{
+    private {{ cleanName }}ServiceInterface ${{ camelName }}Service;
+
+    public function __construct(private readonly {{ cleanName }}RepositoryInterface $repo, {{ cleanName }}ServiceInterface ${{ camelName }}Service)
+    {
+        $this->{{ camelName }}Service = ${{ camelName }}Service;
+    }
+
+    public function getRepository()
+    {
+        return $this->repo;
+    }
+
+
+    public function configureActions(): iterable
+    {
+        return [
+
+        ];
+    }
+
+
+    public function configureForm()
+    {
+        $fields = [
+            IdField::init('id'),
+            // TextareaField::init('my_remarks')
+        ];
+        $this->getForm($fields)
+            ->setName('form_name')
+            ->setMethod('post')
+            ->setActionUrl(route('set_route'));
+    }
+
+    public function configureFilter(): void
+    {
+        $fields = [
+            TextField::init('id'),
+            // TextField::init('other')
+        ];
+        $this->getFilter($fields);
+    }
+
+    public function index(Request $request)
+    {
+        return view('base');
+    }
+
+    public function main(Request $request)
+    {
+        return view('main');
+
+    }
+
+    public function list()
+    {
+        $this->initGrid(['id'], pagination: 10);
+        return view('aimadmin::list');
+    }
+
+    public function show($id)
+    {
+        $this->initShow($id, ['id', 'created_at']);
+        return view('aimadmin::show');
+    }
+
+    public function edit($id)
+    {
+        $this->initEdit($id);
+        return view('aimadmin::edit');
+    }
+
+    public function delete($id)
+    {
+        echo $id;
+        exit();
+    }
+
+    public function create()
+    {
+        $this->initCreate();
+        return view('aimadmin::create');
+    }
+
+    public function store(Request $request): RedirectResponse
+    {
+        $this->initStore($request);
+
+    }
+
+    public function showDetails($id)
+    {
+
+    }
+
+}

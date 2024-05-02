@@ -8,7 +8,7 @@
 
     {{-- Sidebar brand logo --}}
     <a href="{{URL('/')}}" class="brand-link {{config('aim-admin.layout_class.brand', '')}}">
-        <img src="{{asset('img/blx100x100.png')}}" alt="Native BL" class="brand-image img-circle elevation-3">
+        <img src="{{asset('logo.png')}}" alt="Native BL" class="brand-image img-circle elevation-3">
         <span class="brand-text font-weight-light">{{$applicationName}}</span>
     </a>
 

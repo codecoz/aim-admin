@@ -7,7 +7,7 @@
                 <h5 class="widget-user-desc text-white">{{$data?->roles[0]?->title??'Role is not assigned'}}</h5>
             </div>
             <div class="widget-user-image">
-                <img class="img-circle elevation-2" src="{{Auth::user()->userImage()??asset('img/blx100x100.png')}}"
+                <img class="img-circle elevation-2" src="{{Auth::user()->userImage()??asset('logo.png')}}"
                      alt="User Avatar">
             </div>
             <div class="card-footer">

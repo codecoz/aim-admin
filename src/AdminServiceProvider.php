@@ -61,7 +61,7 @@ class AdminServiceProvider extends ServiceProvider
         $this->interfacesBindings();
 
         // Register user service provider.
-        $this->app->register(UserServiceProvider::class);
+//        $this->app->register(UserServiceProvider::class);
 
         // Register the Menu service provider.
         $this->app->register(MenuServiceProvider::class);

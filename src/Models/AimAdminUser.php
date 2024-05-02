@@ -13,11 +13,6 @@ class AimAdminUser extends Authenticatable
 {
     use Notifiable, HelperTrait, APITrait, AttachmentUploadTrait;
 
-    protected $keyType = 'string';
-    public $incrementing = false;
-
-    protected $table = 'vw_app_users';
-
     protected $fillable = [
         'id',
         'user_name',
@@ -62,7 +57,7 @@ class AimAdminUser extends Authenticatable
 
     public function userImage(): ?string
     {
-        return $this->getBase64Attachment($this->sessionCheck('profilePicID'));
+        return "";
     }
 
     public function roles(): array

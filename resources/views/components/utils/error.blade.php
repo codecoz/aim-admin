@@ -1,13 +1,11 @@
 @props(['messages'])
 
 @if ($messages)
-    <div class="alert alert-danger alert-dismissible d-flex align-items-center" role="alert">
-        <i class="fa fa-home me-2"></i>
-        <div>
-            @foreach ((array) $messages as $message)
-                {{ $message }} <button class="btn-close" type="button" data-bs-dismiss="alert"
-                    aria-label="Close"></button>
-            @endforeach
-        </div>
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h5><i class="icon fas fa-ban"></i> Alert!</h5>
+        @foreach ((array) $messages as $message)
+            {{ $message }}
+        @endforeach
     </div>
 @endif

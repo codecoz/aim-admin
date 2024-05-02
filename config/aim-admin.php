@@ -11,6 +11,58 @@ return [
         CodeCoz\AimAdmin\MenuBuilder\Filters\ClassesFilter::class,
     ],
 
+    'menu' => [
+        // Navbar items:
+        [
+            'text' => 'Home',
+            'icon' => 'ti ti-home',
+            'url' => 'home'
+        ],
+
+        [
+            'text' => 'Support 1',
+            'url' => '#',
+            'icon' => 'ti ti-help',
+            'active' => ['support1'],
+            'submenu' => [
+                [
+                    'text' => 'Ticket',
+                    'url' => 'support1',
+                    'icon' => 'ti ti-article',
+                ]
+            ],
+        ],
+
+        [
+            'text' => 'Support 2',
+            'url' => '#',
+            'icon' => 'ti ti-help',
+            'active' => ['support2'],
+            'submenu' => [
+                [
+                    'text' => 'Ticket',
+                    'url' => 'support2',
+                    'icon' => 'ti ti-article',
+                ]
+            ],
+        ],
+
+        [
+            'text' => 'Support 3',
+            'url' => '#',
+            'icon' => 'ti ti-help',
+            'active' => ['support3'],
+            'submenu' => [
+                [
+                    'text' => 'Ticket',
+                    'url' => 'support3',
+                    'icon' => 'ti ti-article',
+                ]
+            ],
+        ],
+
+    ],
+
     /* --------------------------------------------------------------------------------------------
      * File Upload Configuration
      * --------------------------------------------------------------------------------------------
@@ -23,13 +75,13 @@ return [
      * --------------------------------------------------------------------------------------------
      */
     'auth' => [
-        'controller' => \CodeCoz\AimAdmin\Http\Controllers\Auth\AuthController::class,
+        'controller' => \CodeCoz\AimAdmin\Http\Controllers\Auth\LoginController::class,
         'user_model' => \App\Models\User::class,
         'url' => 'login',
         'logout_url' => 'logout',
+        'profile_url' => 'profile',
         'middleware' => ['guest', 'web'],
     ],
-    'footer_text' => 'Anything you want',
     'registration' => [
         'controller' => \CodeCoz\AimAdmin\Http\Controllers\Auth\RegistrationController::class,
         'fields' => [
@@ -44,5 +96,6 @@ return [
         'sidebar' => '',
         'navbar' => '',
         'footer' => '',
-    ]
+    ],
+    'footer_text' => 'Anything you want',
 ];

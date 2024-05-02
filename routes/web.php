@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use CodeCoz\AimAdmin\Http\Controllers\Auth\AuthController;
 use CodeCoz\AimAdmin\Http\Controllers\Auth\RegistrationController;
+use Illuminate\Support\Facades\Route;
+use CodeCoz\AimAdmin\Http\Controllers\Auth\LoginController;
 use CodeCoz\AimAdmin\Http\Controllers\MenuController;
 use CodeCoz\AimAdmin\Http\Controllers\PermissionController;
 use CodeCoz\AimAdmin\Http\Controllers\RoleController;
@@ -11,15 +11,17 @@ use CodeCoz\AimAdmin\Http\Controllers\UserController;
 use CodeCoz\AimAdmin\Http\Middleware\ForcePasswordChange;
 
 Route::group(['middleware' => config('aim-admin.middleware', ['guest', 'web'])], function () {
-    Route::get(config('aim-admin.auth.url', 'login'), [config('aim-admin.auth.controller', AuthController::class), 'view'])->name('login.view');
-    Route::post(config('aim-admin.auth.url', 'login'), [config('aim-admin.auth.controller', AuthController::class), 'login'])->name('login');
-    Route::get('password/reset/{token}', [AuthController::class, 'passwordReset'])->name('password.reset');
-    Route::post('password/reset', [AuthController::class, 'reset'])->name('password.reset.update');
-    Route::get('registration', [config('aim-admin.registration.controller', RegistrationController::class), 'registration'])->name('registration.view');
-    Route::post('registration/send-otp', [config('aim-admin.registration.controller', RegistrationController::class), 'sendOTP'])->name('send.otp');
-    Route::post('registration/save', [config('aim-admin.registration.controller', RegistrationController::class), 'registrationSave'])->name('registration');
-    Route::get('otp-verification', [config('aim-admin.registration.controller', RegistrationController::class), 'otp'])->name('otp');
-    Route::post('otp-verification-check', [config('aim-admin.registration.controller', RegistrationController::class), 'otpValidate'])->name('otp.verify')->middleware('throttle:5,1');
+
+    Route::get(config('aim-admin.auth.url', 'login'), [config('aim-admin.auth.controller', LoginController::class), 'login'])->name('login');
+    Route::post(config('aim-admin.auth.url', 'login'), [config('aim-admin.auth.controller', LoginController::class), 'authenticate']);
+
+    Route::get('forget-password', [LoginController::class, 'passwordReset'])->name('forget.password');
+    Route::get('password/reset/{token}', [LoginController::class, 'passwordReset'])->name('password.reset');
+    Route::post('password/reset', [LoginController::class, 'reset'])->name('password.reset.update');
+
+    Route::get('registration', [config('aim-admin.registration.controller', RegistrationController::class), 'registration'])->name('registration');
+    Route::post('registration', [config('aim-admin.registration.controller', RegistrationController::class), 'register']);
+
 });
 
 Route::group(['middleware' => ['web', 'auth']], function () {
@@ -74,7 +76,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     });
 
     Route::post("/editor-file-upload", [TinyMceFileController::class, 'fileUpload'])->name('editor.file.upload');
-    Route::get(config('aim-admin.auth.logout_url', 'logout'), [config('aim-admin.auth.controller', AuthController::class), 'logout'])
-        ->withoutMiddleware([ForcePasswordChange::class])->name('logout');
+    Route::get(config('aim-admin.auth.logout_url', 'logout'), [config('aim-admin.auth.controller', LoginController::class), 'logout'])
+        ->name('logout');
 
 });

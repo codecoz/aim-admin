@@ -1,7 +1,7 @@
 <x-aimadmin::layout.login>
     <x-aimadmin::layout.auth-card>
         <x-slot name="logo">
-            <img src="{{ asset('img/BL.png') }}" alt="Logo" style="width: 200px; height: auto;">
+            <img src="{{ asset('logo.png') }}" alt="Logo" style="width: 150px; height: auto;">
         </x-slot>
         <x-aimadmin::utils.error :messages="$errors->get('email')" class="mt-2"/>
         <form method="POST" action="{{ route('login') }}">
@@ -39,18 +39,13 @@
                 <!-- /.col -->
             </div>
         </form>
-        <br>
-        <hr>
-        <form method="GET" action="{{ route('sso.login') }}">
-            @csrf
-            <div class="social-auth-links text-center mt-2 mb-3">
-                <div class="d-grid mb-3">
-                    <button class="btn btn-block btn-primary" type="submit">
-                        <i class="fas fa-sign-in mr-2"></i> Sign in using SSO
-                    </button>
-                </div>
-            </div>
-        </form>
+
+        <p class="mb-1">
+            <a href="#">I forgot my password</a>
+        </p>
+        <p class="mb-0">
+            <a href="{{route('registration')}}" class="text-center">Register a new membership</a>
+        </p>
 
     </x-aimadmin::layout.auth-card>
 </x-aimadmin::layout.login>

@@ -5,6 +5,7 @@ namespace CodeCoz\AimAdmin\Providers;
 use CodeCoz\AimAdmin\Admin;
 use CodeCoz\AimAdmin\MenuBuilder\AimAdminMenu;
 use CodeCoz\AimAdmin\MenuBuilder\BuildingMenu;
+use Illuminate\Contracts\Config\Repository;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Support\ServiceProvider;
 
@@ -40,9 +41,9 @@ class MenuServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Dispatcher $events)
+    public function boot(Dispatcher $events, Repository $config)
     {
-        $this->registerMenu($events);
+        $this->registerMenu($events, $config);
     }
 
     /**
@@ -50,11 +51,12 @@ class MenuServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    private function registerMenu(Dispatcher $events)
+    private function registerMenu(Dispatcher $events, Repository $config)
     {
-        $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
-            $menuItems = session('menus', []);
-            $event->menu->add(...$menuItems);
+        $events->listen(BuildingMenu::class, function (BuildingMenu $event) use ($config) {
+            $menu = $config->get('aim-admin.menu', []);
+            $menu = is_array($menu) ? $menu : [];
+            $event->menu->add(...$menu);
         });
     }
 

@@ -3,6 +3,7 @@
 namespace CodeCoz\AimAdmin\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use CodeCoz\AimAdmin\Http\Requests\AuthenticateRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -15,12 +16,9 @@ class LoginController extends Controller
         return view('aimadmin::auth.login');
     }
 
-    public function authenticate(Request $request): RedirectResponse
+    public function authenticate(AuthenticateRequest $request): RedirectResponse
     {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
+        $credentials = $request->validated();
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();

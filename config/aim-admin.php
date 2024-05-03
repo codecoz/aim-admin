@@ -14,9 +14,9 @@ return [
     'menu' => [
         // Navbar items:
         [
-            'text' => 'Home',
+            'text' => 'Dashboard',
             'icon' => 'ti ti-home',
-            'url' => 'home'
+            'url' => 'dashboard'
         ],
 
         [
@@ -91,7 +91,7 @@ return [
     ],
     'back_to_top' => true,
     'layout_class' => [
-        'body' => '',
+        'body' => 'text-sm',
         'brand' => '',
         'sidebar' => '',
         'navbar' => '',

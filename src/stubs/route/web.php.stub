@@ -1,8 +1,5 @@
-Route::middleware(['auth', 'web'])->group(function () {
-
-    Route::get('/home', function () {
-        return view('home');
-    })->name('home');
-
-    // Your web routes goes here
+Route::group(['middleware' => ['web', 'auth']], function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 });

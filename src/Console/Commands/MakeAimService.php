@@ -13,7 +13,7 @@ class MakeAimService extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'aim:make-service';
+    protected $name = 'aim-admin:make-service';
 
     /**
      * The type of class being generated.

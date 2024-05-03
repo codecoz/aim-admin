@@ -1,7 +1,5 @@
 @php
     $name = Illuminate\Support\Facades\Auth::user()->name;
-    $memberSince = Illuminate\Support\Facades\Auth::user()->created_at;
-    $image = Illuminate\Support\Facades\Auth::user()->userImage();
 @endphp
 <li class="nav-item dropdown user-menu">
     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">

@@ -12,7 +12,7 @@ class MakeAimServiceInterface extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'aim:make-service-interface';
+    protected $name = 'aim-admin:make-service-interface';
 
     /**
      * The type of class being generated.

@@ -13,7 +13,7 @@ class MakeAimRepository extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'aim:make-repo';
+    protected $name = 'aim-admin:make-repo';
 
     /**
      * The type of class being generated.

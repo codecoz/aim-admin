@@ -4,7 +4,7 @@ namespace CodeCoz\AimAdmin\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PermissionUpdateRequest extends FormRequest
+class AuthenticateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,10 +22,8 @@ class PermissionUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
-            'applicationID' => 'required',
-            'title' => 'required|string',
-            'shortDescription' => 'required|string',
+            'email' => ['required', 'email'],
+            'password' => ['required'],
         ];
     }
 }

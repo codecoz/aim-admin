@@ -1,6 +1,6 @@
 @php
     use CodeCoz\AimAdmin\MenuBuilder\AimAdminMenu;
-    $applicationName = env('APP_NAME', 'Native BL');
+    $applicationName = env('APP_NAME', 'Aim Admin');
     $menus = app(AimAdminMenu::class)->menu('sidebar');
 @endphp
 
@@ -8,7 +8,7 @@
 
     {{-- Sidebar brand logo --}}
     <a href="{{URL('/')}}" class="brand-link {{config('aim-admin.layout_class.brand', '')}}">
-        <img src="{{asset('logo.png')}}" alt="Native BL" class="brand-image img-circle elevation-3">
+        <img src="{{asset('logo.png')}}" alt="Aim Admin" class="brand-image img-circle elevation-3">
         <span class="brand-text font-weight-light">{{$applicationName}}</span>
     </a>
 

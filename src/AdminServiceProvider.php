@@ -8,26 +8,16 @@ use Illuminate\Support\ServiceProvider;
 use CodeCoz\AimAdmin\Console\Commands\MakeAimController;
 use CodeCoz\AimAdmin\Console\Commands\MakeAimRepository;
 use CodeCoz\AimAdmin\Console\Commands\MakeAimRepositoryInterface;
-use CodeCoz\AimAdmin\Console\Commands\MakeAimRequest;
 use CodeCoz\AimAdmin\Console\Commands\MakeAimService;
 use CodeCoz\AimAdmin\Console\Commands\MakeAimServiceInterface;
-use CodeCoz\AimAdmin\Console\Commands\AimCommand;
+use CodeCoz\AimAdmin\Console\Commands\AimAdminCommand;
+use CodeCoz\AimAdmin\Console\Commands\AddToRouteCommand;
 use CodeCoz\AimAdmin\Console\InstallAimAdminCommand;
 use CodeCoz\AimAdmin\Contracts\Service\CrudBoard\CrudBoardInterface;
-use CodeCoz\AimAdmin\Contracts\Service\LoginServiceInterface;
-use CodeCoz\AimAdmin\Contracts\Service\MenuServiceInterface;
-use CodeCoz\AimAdmin\Contracts\Service\PermissionServiceInterface;
-use CodeCoz\AimAdmin\Contracts\Service\RoleServiceInterface;
-use CodeCoz\AimAdmin\Contracts\Service\UserServiceInterface;
 use CodeCoz\AimAdmin\Providers\MenuServiceProvider;
 use CodeCoz\AimAdmin\Providers\RepositoryServiceProvider;
 use CodeCoz\AimAdmin\Providers\UserServiceProvider;
-use CodeCoz\AimAdmin\Services\Auth\LoginService;
 use CodeCoz\AimAdmin\Services\CrudBoard\CrudBoard;
-use CodeCoz\AimAdmin\Services\MenuService;
-use CodeCoz\AimAdmin\Services\PermissionService;
-use CodeCoz\AimAdmin\Services\RoleService;
-use CodeCoz\AimAdmin\Services\UserService;
 use Illuminate\Contracts\View\Factory;
 
 class AdminServiceProvider extends ServiceProvider
@@ -108,11 +98,6 @@ class AdminServiceProvider extends ServiceProvider
 
         // Register the extra Interfaces to the package provides.
         $this->app->singleton(CrudBoardInterface::class, CrudBoard::class);
-        $this->app->singleton(MenuServiceInterface::class, MenuService::class);
-        $this->app->singleton(UserServiceInterface::class, UserService::class);
-        $this->app->singleton(LoginServiceInterface::class, LoginService::class);
-        $this->app->singleton(RoleServiceInterface::class, RoleService::class);
-        $this->app->singleton(PermissionServiceInterface::class, PermissionService::class);
 
     }
 
@@ -228,8 +213,8 @@ class AdminServiceProvider extends ServiceProvider
             MakeAimServiceInterface::class,
             MakeAimRepository::class,
             MakeAimService::class,
-            MakeAimRequest::class,
-            AimCommand::class,
+            AimAdminCommand::class,
+            AddToRouteCommand::class,
         ]);
     }
 

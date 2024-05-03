@@ -10,7 +10,7 @@ use Illuminate\Filesystem\Filesystem;
 
 class InstallAimAdminCommand extends Command
 {
-    protected $signature = 'aim:install';
+    protected $signature = 'aim-admin:install';
 
     protected $description = 'Install Aim Admin';
 
@@ -49,9 +49,9 @@ class InstallAimAdminCommand extends Command
         $this->info('Migrations have been exported.');
         self::exportModel();
         $this->info('User model has been exported.');
-        self::addedHomeRoute();
+        self::addedDashboardRoute();
         $this->info('Home route has been added.');
-        self::addedHomeBlade();
+        self::addedDashboardBlade();
         $this->info('Home blade has been added.');
         self::exportVite();
         $this->info('vite.config.js has been exported.');
@@ -254,7 +254,7 @@ class InstallAimAdminCommand extends Command
      * Added Home as named route
      * @return void
      */
-    protected static function addedHomeRoute(): void
+    protected static function addedDashboardRoute(): void
     {
         // Read the content of web.php.stub
         $stubContent = file_get_contents(__DIR__ . '../../stubs/route/web.php.stub');
@@ -276,9 +276,9 @@ class InstallAimAdminCommand extends Command
      * Added home blade
      * @return void
      */
-    protected static function addedHomeBlade(): void
+    protected static function addedDashboardBlade(): void
     {
-        copy(__DIR__ . '../../stubs/resources/views/home.blade.php', resource_path('views/home.blade.php'));
+        copy(__DIR__ . '../../stubs/resources/views/dashboard.blade.php', resource_path('views/dashboard.blade.php'));
     }
 
     /**

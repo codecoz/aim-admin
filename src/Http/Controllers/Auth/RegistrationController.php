@@ -4,11 +4,10 @@ namespace CodeCoz\AimAdmin\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use CodeCoz\AimAdmin\Http\Requests\RegisterRequest;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rule;
 
 class RegistrationController extends Controller
 {
@@ -17,13 +16,9 @@ class RegistrationController extends Controller
         return view('aimadmin::auth.register');
     }
 
-    public function register(Request $request): RedirectResponse
+    public function register(RegisterRequest $request): RedirectResponse
     {
-        $credentials = $request->validate([
-            'name' => ['required', 'max:254'],
-            'email' => ['required', Rule::unique('users')],
-            'password' => ['required', 'string', 'min:6', 'confirmed']
-        ]);
+        $credentials = $request->validated();
 
         $user = User::create([
             'name' => $credentials['name'],

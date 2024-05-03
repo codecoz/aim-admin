@@ -13,7 +13,7 @@ class MakeAimController extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'aim:make-controller';
+    protected $name = 'aim-admin:make-controller';
 
     /**
      * The type of class being generated.

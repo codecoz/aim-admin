@@ -3,23 +3,24 @@
 namespace CodeCoz\AimAdmin\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
 use Symfony\Component\Console\Input\InputArgument;
 
-class AimCommand extends Command
+class AimAdminCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'aim:make';
+    protected $signature = 'aim-admin:make';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Aim Make Command';
+    protected $description = 'Aim Admin Make Command';
 
     // Constants for the types
     const TYPE_CONTROLLER = 'Controller';
@@ -27,6 +28,7 @@ class AimCommand extends Command
     const TYPE_SERVICE = 'Service';
     const TYPE_Request = 'Request';
     const TYPE_ALL = 'All';
+    const TYPE_ROUTE = 'Route';
 
     /**
      * Execute the console command.
@@ -36,8 +38,8 @@ class AimCommand extends Command
 
         $types = $this->choice(
             'What do you want to create ?',
-            [self::TYPE_CONTROLLER, self::TYPE_REPOSITORY, self::TYPE_SERVICE, self::TYPE_Request, self::TYPE_ALL],
-            4,
+            [self::TYPE_CONTROLLER, self::TYPE_REPOSITORY, self::TYPE_SERVICE, self::TYPE_Request, self::TYPE_ROUTE, self::TYPE_ALL],
+            5,
             $maxAttempts = null,
             $allowMultipleSelections = true
         );
@@ -65,6 +67,10 @@ class AimCommand extends Command
                 case self::TYPE_ALL:
                     $this->createAll($name);
                     break;
+
+                case self::TYPE_ROUTE:
+                    $this->addToRoute($name);
+                    break;
             }
         }
 
@@ -72,24 +78,29 @@ class AimCommand extends Command
 
     protected function createController($name): void
     {
-        $this->call('aim:make-controller', ['name' => $name]);
+        $this->call('aim-admin:make-controller', ['name' => $name]);
     }
 
     protected function createRepository($name): void
     {
-        $this->call('aim:make-repo-interface', ['name' => $name]);
-        $this->call('aim:make-repo', ['name' => $name]);
+        $this->call('aim-admin:make-repo-interface', ['name' => $name]);
+        $this->call('aim-admin:make-repo', ['name' => $name]);
     }
 
     protected function createService($name): void
     {
-        $this->call('aim:make-service-interface', ['name' => $name]);
-        $this->call('aim:make-service', ['name' => $name]);
+        $this->call('aim-admin:make-service-interface', ['name' => $name]);
+        $this->call('aim-admin:make-service', ['name' => $name]);
     }
 
     protected function createRequest($name): void
     {
-        $this->call('aim:make-request', ['name' => $name]);
+        Artisan::call("make:request", ['name' => $name . 'Request']);
+    }
+
+    protected function addToRoute($name): void
+    {
+        $this->call('aim-admin:add-to-route', ['name' => $name]);
     }
 
     protected function createAll($name)

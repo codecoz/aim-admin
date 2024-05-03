@@ -6,7 +6,7 @@
         <div class="text-center">
             <h3 class="mb-3">User Registration</h3>
         </div>
-        <x-aimadmin::utils.error :messages="$errors->get('email')" class="mt-2"/>
+        <x-aimadmin::utils.error :messages="$errors" class="mt-2"/>
         <form method="POST" action="{{ route('registration') }}">
             @csrf
             <div class="mb-3">
@@ -51,7 +51,7 @@
             <div class="d-grid mb-3">
                 <button class="btn btn-primary w-100" type="submit">Register</button>
             </div>
-
+            <a href="{{route('login')}}" class="text-center">I already have a membership</a>
         </form>
 
     </x-aimadmin::layout.auth-card>

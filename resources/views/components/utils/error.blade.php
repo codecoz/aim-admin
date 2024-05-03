@@ -1,11 +1,13 @@
 @props(['messages'])
 
-@if ($messages)
-    <div class="alert alert-danger alert-dismissible">
+@if ($messages->any())
+    {{-- Check if there are any messages --}}
+    <div {{ $attributes->merge(['class' => 'alert alert-danger alert-dismissible']) }}>
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <h5><i class="icon fas fa-ban"></i> Alert!</h5>
-        @foreach ((array) $messages as $message)
-            {{ $message }}
+        @foreach ($messages->all() as $message)
+            {{-- Loop through all messages --}}
+            <div>{{ $message }}</div>
         @endforeach
     </div>
 @endif

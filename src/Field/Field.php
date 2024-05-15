@@ -29,7 +29,7 @@ final class Field implements FieldInterface
         return (new self())
             ->setName($name)
             ->setLabel($label)
-            ->setComponent('aimadmin::crudboard.fields.grid_cell');
+            ->setComponent('aim-admin::crudboard.fields.grid_cell');
     }
 
 }

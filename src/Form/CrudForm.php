@@ -24,12 +24,10 @@ class CrudForm extends AbstractForm
 {
     private Request $request;
 
-
     public function getActions(): ActionCollection
     {
         return $this->actions->getFormActions();
     }
-
 
     public function processData(Request $request)
     {

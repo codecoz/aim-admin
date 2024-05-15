@@ -26,7 +26,7 @@
     {{-- Menu items --}}
     <ul class="nav nav-treeview">
         @foreach($item['submenu'] as $item)
-            <x-aimadmin::sidebar.item :item="$item"/>
+            <x-aim-admin::sidebar.item :item="$item"/>
         @endforeach
     </ul>
 

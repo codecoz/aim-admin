@@ -26,7 +26,6 @@ final class ActionDto extends AbstractHtmlElementDto
     private $url;
     private ?string $routeName = null;
     private array $routeParameters = [];
-
     public function getType(): string
     {
         return $this->type;

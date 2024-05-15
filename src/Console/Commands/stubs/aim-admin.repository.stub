@@ -16,22 +16,14 @@ class {{ class }}  extends AbstractAimAdminRepository implements {{ class }}Inte
      return {{ tableModel }}::class;
    }
 
-   public function getGridData(array $filters = []) : iterable
+   public function getGridQuery(): ?Builder
    {
-       return $this->all();
+       return {{ tableModel }}::query();
    }
 
-   public function applyFilterData(Collection $data, array $filters): Collection
+   public function applyFilterQuery(Builder $query, array $filters): Builder
    {
-       foreach ($filters as $field => $value) {
-           if ($value !== null) {
-               $data = $data->filter(function ($item) use ($field, $value) {
-                   return $item[$field] !== null && stripos((string)$item[$field], (string)$value) !== false;
-               });
-           }
-       }
-       return $data;
-
+       return parent::applyFilterQuery($query, $filters);
    }
 
 }

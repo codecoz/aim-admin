@@ -20,6 +20,5 @@ namespace CodeCoz\AimAdmin\Contracts\Controller;
 interface AimAdminControllerInterface
 {
     function getRepository();
-
     function initGrid(array $columns);
 }

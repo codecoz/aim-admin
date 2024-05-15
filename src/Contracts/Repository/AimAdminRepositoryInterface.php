@@ -20,6 +20,5 @@ namespace CodeCoz\AimAdmin\Contracts\Repository;
 interface AimAdminRepositoryInterface
 {
     public function getModelFqcn(): string;
-
     public function crudShow(int|string $id): ?\ArrayAccess;
 }

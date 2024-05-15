@@ -4,7 +4,6 @@ namespace CodeCoz\AimAdmin\Driver;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\UserProvider;
-
 class AimAdminUserProviderDriver implements UserProvider
 {
     public function retrieveById($identifier)
@@ -32,7 +31,6 @@ class AimAdminUserProviderDriver implements UserProvider
         }
         return null;
     }
-
 
     public function validateCredentials(Authenticatable $user, array $credentials)
     {

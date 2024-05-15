@@ -21,11 +21,11 @@
 <div class="wrapper">
 
     <!-- Navbar -->
-    <x-aimadmin::navbar/>
+    <x-aim-admin::navbar/>
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <x-aimadmin::sidebar/>
+    <x-aim-admin::sidebar/>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -61,26 +61,26 @@
     <!-- /.content-wrapper -->
 
     <!-- Control Sidebar -->
-    <x-aimadmin::right-sidebar/>
+    <x-aim-admin::right-sidebar/>
     <!-- /.control-sidebar -->
 
     <!-- Main Footer -->
-    <x-aimadmin::footer/>
+    <x-aim-admin::footer/>
 
 </div>
 <!-- ./wrapper -->
 @if (session('success'))
-    <x-aimadmin::toast type="success" message="{{ session('success') }}"/>
+    <x-aim-admin::toast type="success" message="{{ session('success') }}"/>
 @elseif((session('info')))
-    <x-aimadmin::toast type="info" message="{{ session('info') }}"/>
+    <x-aim-admin::toast type="info" message="{{ session('info') }}"/>
 @elseif((session('warning')))
-    <x-aimadmin::toast type="warning" message="{{ session('warning') }}"/>
+    <x-aim-admin::toast type="warning" message="{{ session('warning') }}"/>
 @elseif((session('error')))
-    <x-aimadmin::toast type="error" message="{{ session('error') }}"/>
+    <x-aim-admin::toast type="error" message="{{ session('error') }}"/>
 @endif
 @if($errors->any())
     @foreach ($errors->all() as $error)
-        <x-aimadmin::toast type="error" message="{{ $error }}"/>
+        <x-aim-admin::toast type="error" message="{{ $error }}"/>
     @endforeach
 @endif
 @stack('scripts')

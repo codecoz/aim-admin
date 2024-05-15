@@ -28,7 +28,7 @@ final class TextField implements FieldInterface
     {
         return (new self())
             ->setName($name)
-            ->setComponent('aimadmin::crudboard.fields.input')
+            ->setComponent('aim-admin::crudboard.fields.input')
             ->setHtmlElementName('input')
             ->setPlaceholder($label ?? self::humanizeString($name))
             ->setInputType('text')

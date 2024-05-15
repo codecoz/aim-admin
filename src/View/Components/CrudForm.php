@@ -30,6 +30,6 @@ class CrudForm extends AbstractAimAdminComponent
     public function render()
     {
         $this->form = $this->getCrudBoard()->getForm();
-        return view('aimadmin::crudboard.form');
+        return view('aim-admin::crudboard.form');
     }
 }

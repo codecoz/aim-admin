@@ -31,6 +31,6 @@ class CrudGrid extends AbstractAimAdminComponent
     public function render()
     {
         $this->grid = $this->getCrudBoard()->getGrid();
-        return view('aimadmin::crudboard.grid');
+        return view('aim-admin::crudboard.grid');
     }
 }

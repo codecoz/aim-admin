@@ -1,5 +1,5 @@
-<x-aimadmin::layout.login>
-    <x-aimadmin::layout.auth-card>
+<x-aim-admin::layout.login>
+    <x-aim-admin::layout.auth-card>
         <x-slot name="logo">
             {{-- <img
             src="{{asset('img/cloudy4next.ico')}}"
@@ -17,7 +17,7 @@
                     <i class="fa fa-envelope"> </i>
                 </span>
             </div>
-            {{-- <x-aimadmin::utils.error :messages="$errors->get('email')" class="mt-2" /> --}}
+            {{-- <x-aim-admin::utils.error :messages="$errors->get('email')" class="mt-2" /> --}}
             <input type="hidden" id="token" name="token" value="{{ $token }}">
 
             <div class="input-group mb-3">
@@ -27,7 +27,7 @@
                     <i class="fa fa-envelope"> </i>
                 </span>
             </div>
-            {{-- <x-aimadmin::utils.error :messages="$errors->get('password')" class="mt-2" /> --}}
+            {{-- <x-aim-admin::utils.error :messages="$errors->get('password')" class="mt-2" /> --}}
 
             <div class="input-group mb-3">
                 <input class="form-control  mt-1" id="password_confirmation" placeholder="Enter confirm password"
@@ -36,12 +36,12 @@
                 <span class="input-group-text">
                     <i class="fa fa-envelope"> </i>
                 </span>
-                <x-aimadmin::utils.error :messages="$errors->get('password_confirmation')" class="mt-2"/>
+                <x-aim-admin::utils.error :messages="$errors->get('password_confirmation')" class="mt-2"/>
 
             </div>
             <div class="d-grid mb-3">
                 <button class="btn btn-primary w-100" type="submit" id="submit-button">Reset Password</button>
             </div>
         </form>
-    </x-aimadmin::layout.auth-card>
-</x-aimadmin::layout.login>
+    </x-aim-admin::layout.auth-card>
+</x-aim-admin::layout.login>

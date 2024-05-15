@@ -28,7 +28,7 @@ final class FileField implements FieldInterface
     {
         return (new self())
             ->setName($name)
-            ->setComponent('aimadmin::crudboard.fields.file')
+            ->setComponent('aim-admin::crudboard.fields.file')
             ->setHtmlElementName('input')
             ->makeFileType()
             ->setPlaceholder($label ?? self::humanizeString($name))

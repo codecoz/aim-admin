@@ -15,7 +15,7 @@ namespace CodeCoz\AimAdmin\Collection;
 /**
  * This class is a collection abstract class abstract.
  *
- * @author CodeCoz <md.a.ibne.masud@gmail.com>
+ * @author CodeCoz <contact@codecoz.com>
  */
 abstract class AbstractCollection implements \ArrayAccess, \Countable, \IteratorAggregate
 {

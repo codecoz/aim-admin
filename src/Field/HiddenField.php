@@ -29,7 +29,7 @@ final class HiddenField implements FieldInterface
         $value = isset($params[0]) ? $params[0] : (isset($params['value']) ? $params['value'] : null);
         return (new self())
             ->setName($name)
-            ->setComponent('aimadmin::crudboard.fields.hidden')
+            ->setComponent('aim-admin::crudboard.fields.hidden')
             ->setDefaultValue($value);
     }
 

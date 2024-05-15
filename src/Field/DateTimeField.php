@@ -17,7 +17,7 @@ use CodeCoz\AimAdmin\Contracts\Field\FieldInterface;
 /**
  * This class is for field creation in crudboard  .
  *
- * @author CodeCoz <md.a.ibne.masud@gmail.com>
+ * @author CodeCoz <contact@codecoz.com>
  */
 final class DateTimeField implements FieldInterface
 {
@@ -28,7 +28,7 @@ final class DateTimeField implements FieldInterface
         return (new self())
             ->setName($name)
             ->setLabel($label ?? self::humanizeString($name))
-            ->setComponent('aimadmin::crudboard.fields.datetime')
+            ->setComponent('aim-admin::crudboard.fields.datetime')
             ->formatValue(fn($value): string => (new \DateTime($value))->format('Y-m-d'));
     }
 

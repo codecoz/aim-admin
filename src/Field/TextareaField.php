@@ -34,7 +34,7 @@ final class TextareaField implements FieldInterface
         $finalParams = $params + self::$defaultParams;
         return (new self())
             ->setName($name)
-            ->setComponent('aimadmin::crudboard.fields.textarea')
+            ->setComponent('aim-admin::crudboard.fields.textarea')
             ->setLabel($label)
             ->setCustomOption(self::ROW, $finalParams[self::ROW])
             ->setPlaceholder($label)

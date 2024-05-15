@@ -1,7 +1,7 @@
-<x-aimadmin::layout.main>
+<x-aim-admin::layout.main>
     <x-slot:title>
         {{ $pageTitle ?? 'Create Item' }}
     </x-slot:title>
-    <x-aimadmin::crud-form title="{{ $pageTitle ?? 'Create Item' }}"/>
-</x-aimadmin::layout.main>
+    <x-aim-admin::crud-form title="{{ $pageTitle ?? 'Create Item' }}"/>
+</x-aim-admin::layout.main>
 

@@ -1,9 +1,9 @@
-<x-aimadmin::layout.login>
-    <x-aimadmin::layout.auth-card>
+<x-aim-admin::layout.login>
+    <x-aim-admin::layout.auth-card>
         <x-slot name="logo">
             <img src="{{ asset('logo.png') }}" alt="Logo" style="width: 150px; height: auto;">
         </x-slot>
-        <x-aimadmin::utils.error :messages="$errors" class="mt-2"/>
+        <x-aim-admin::utils.error :messages="$errors" class="mt-2"/>
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <div class="input-group mb-3">
@@ -47,5 +47,5 @@
             <a href="{{route('registration')}}" class="text-center">Register a new membership</a>
         </p>
 
-    </x-aimadmin::layout.auth-card>
-</x-aimadmin::layout.login>
+    </x-aim-admin::layout.auth-card>
+</x-aim-admin::layout.login>

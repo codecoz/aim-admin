@@ -31,6 +31,6 @@ class CrudShow extends AbstractAimAdminComponent
     public function render()
     {
         $this->show = $this->getCrudBoard()->getCrudShow();
-        return view('aimadmin::crudboard.show');
+        return view('aim-admin::crudboard.show');
     }
 }

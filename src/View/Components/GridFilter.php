@@ -31,7 +31,7 @@ class GridFilter extends AbstractAimAdminComponent
     public function render()
     {
         $this->prepareFields();
-        return view('aimadmin::crudboard.filter');
+        return view('aim-admin::crudboard.filter');
     }
 
     private function prepareFields(): void

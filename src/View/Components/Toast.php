@@ -37,7 +37,7 @@ class Toast extends Component
      */
     public function render(): View
     {
-        return view('aimadmin::crudboard.toast');
+        return view('aim-admin::crudboard.toast');
     }
 
 }

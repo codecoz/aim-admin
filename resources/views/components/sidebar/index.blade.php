@@ -21,7 +21,7 @@
                 data-accordion="false">
                 {{-- Configured sidebar links --}}
                 @foreach($menus as $item)
-                    <x-aimadmin::sidebar.item :item="$item"/>
+                    <x-aim-admin::sidebar.item :item="$item"/>
                 @endforeach
             </ul>
         </nav>

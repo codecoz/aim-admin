@@ -12,7 +12,7 @@
         </div>
         <div class="card-body">
             <div id="alert"></div>
-            @include('aimadmin::alert.validation-error')
+            @include('aim-admin::alert.validation-error')
             <form name="{{$form->getName()}}" action="{{$form->getActionUrl()}}" method="{{$form->getMethod()}}"
                   class="{{$form->getCssClass()}}" {{ $form->getAttributesAsHtml() }}
                   @if($form->getFields()->hasFileInput())

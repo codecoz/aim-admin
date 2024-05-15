@@ -1,4 +1,4 @@
-<x-aimadmin::layout.main>
+<x-aim-admin::layout.main>
     <x-slot:title>
         Aim :: Admin Dashboard
     </x-slot:title>
@@ -17,4 +17,4 @@
             </div>
         </div>
     </div>
-</x-aimadmin::layout.main>
+</x-aim-admin::layout.main>

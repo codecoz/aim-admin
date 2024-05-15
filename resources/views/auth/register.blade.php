@@ -1,12 +1,12 @@
-<x-aimadmin::layout.login>
-    <x-aimadmin::layout.auth-card>
+<x-aim-admin::layout.login>
+    <x-aim-admin::layout.auth-card>
         <x-slot name="logo">
             <img src="{{ asset('logo.png') }}" alt="Logo" style="width: 150px; height: auto;">
         </x-slot>
         <div class="text-center">
             <h3 class="mb-3">User Registration</h3>
         </div>
-        <x-aimadmin::utils.error :messages="$errors" class="mt-2"/>
+        <x-aim-admin::utils.error :messages="$errors" class="mt-2"/>
         <form method="POST" action="{{ route('registration') }}">
             @csrf
             <div class="mb-3">
@@ -54,5 +54,5 @@
             <a href="{{route('login')}}" class="text-center">I already have a membership</a>
         </form>
 
-    </x-aimadmin::layout.auth-card>
-</x-aimadmin::layout.login>
+    </x-aim-admin::layout.auth-card>
+</x-aim-admin::layout.login>

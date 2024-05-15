@@ -23,12 +23,10 @@ abstract class AbstractAimAdminController extends Controller implements AimAdmin
         return [];
     }
 
-
     public function configureGridRowActions(): iterable
     {
         return [];
     }
-
 
     public function initGrid(array $columns, mixed ...$params): CrudGridInterface
     {

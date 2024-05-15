@@ -28,7 +28,7 @@ final class IdField implements FieldInterface
     {
         return (new self())
             ->setName($name)
-            ->setComponent('aimadmin::crudboard.fields.hidden')
+            ->setComponent('aim-admin::crudboard.fields.hidden')
             ->makeHiddenType()
             ->setLabel($label ?? self::humanizeString($name));
     }

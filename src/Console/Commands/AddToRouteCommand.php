@@ -34,8 +34,10 @@ class AddToRouteCommand extends Command
             Route::get('/', [{$controllerName}::class, 'list'])->name('{$name}.list');
             Route::get('/show/{id}', [{$controllerName}::class, 'show'])->name('{$name}.show');
             Route::get('/edit/{id}', [{$controllerName}::class, 'edit'])->name('{$name}.edit');
+            Route::post('/update', [{$controllerName}::class, 'update'])->name('{$name}.update');
             Route::post('/delete/{id}', [{$controllerName}::class, 'delete'])->name('{$name}.delete');
             Route::get('/create', [{$controllerName}::class, 'create'])->name('{$name}.create');
+            Route::post('/create', [{$controllerName}::class, 'store'])->name('{$name}.store');
         });
         EOT;
         $routeFile = base_path('routes/web.php');

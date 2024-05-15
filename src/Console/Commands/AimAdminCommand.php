@@ -5,7 +5,6 @@ namespace CodeCoz\AimAdmin\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 use Symfony\Component\Console\Input\InputArgument;
-
 class AimAdminCommand extends Command
 {
     /**

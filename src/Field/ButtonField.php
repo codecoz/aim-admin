@@ -18,7 +18,7 @@ use CodeCoz\AimAdmin\Dto\CrudBoard\ActionDto;
 /**
  * This class is for field creation in crudboard  .
  *
- * @author CodeCoz <md.a.ibne.masud@gmail.com>
+ * @author CodeCoz <contact@codecoz.com>
  */
 final class ButtonField
 {
@@ -68,7 +68,7 @@ final class ButtonField
         isset($params['icon']) && $dto->setIcon($params['icon']);
         isset($params['cssClass']) && $dto->setCssClass($params['cssClass']);
         $dto->setHtmlElement('a');
-        $dto->setComponent('aimadmin::crudboard.actions.grid-button');
+        $dto->setComponent('aim-admin::crudboard.actions.grid-button');
         $dto->setHtmlAttributes([]);
         return new self($dto);
     }
@@ -77,7 +77,7 @@ final class ButtonField
     {
         $this->dto->setType(ActionDto::TYPE_CRUD_BOARD);
         $this->iconForNew();
-        $this->dto->setComponent('aimadmin::crudboard.actions.board-button');
+        $this->dto->setComponent('aim-admin::crudboard.actions.board-button');
         return $this;
     }
 
@@ -97,7 +97,7 @@ final class ButtonField
     {
         $this->dto->setType(ActionDto::TYPE_FORM);
         $this->dto->setCssClass('btn-secondary');
-        $this->dto->setComponent("aimadmin::crudboard.actions.button");
+        $this->dto->setComponent("aim-admin::crudboard.actions.button");
         return $this;
     }
 
@@ -115,7 +115,7 @@ final class ButtonField
         $this->dto->setHtmlElement('button');
         $this->dto->setCssClass('float-right');
         $this->setHtmlAttributes(['type' => 'submit'])
-            ->setComponent("aimadmin::crudboard.actions.button");
+            ->setComponent("aim-admin::crudboard.actions.button");
         $this->dto->setUrl('/');
         return $this;
     }
@@ -124,7 +124,7 @@ final class ButtonField
     {
         $this->dto->setType(ActionDto::TYPE_SHOW);
         $this->dto->setCssClass('btn-secondary');
-        $this->dto->setComponent('aimadmin::crudboard.actions.show-button');
+        $this->dto->setComponent('aim-admin::crudboard.actions.show-button');
         return $this;
     }
 

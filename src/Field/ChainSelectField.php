@@ -35,7 +35,7 @@ final class ChainSelectField
         $children = FieldCollection::init($fields);
         return (new self())
             ->setName($name ?? 'chain')
-            ->setComponent('aimadmin::crudboard.fields.chainselect')
+            ->setComponent('aim-admin::crudboard.fields.chainselect')
             ->setCustomOption('dependant-route', $route)
             ->setCustomOption('children', $children);
 

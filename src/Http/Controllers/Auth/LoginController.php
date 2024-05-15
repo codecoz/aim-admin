@@ -13,7 +13,7 @@ class LoginController extends Controller
 {
     public function login()
     {
-        return view('aimadmin::auth.login');
+        return view('aim-admin::auth.login');
     }
 
     public function authenticate(AuthenticateRequest $request): RedirectResponse

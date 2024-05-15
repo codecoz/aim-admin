@@ -27,7 +27,7 @@ class AdminServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected string $packagePrefix = 'aimadmin';
+    protected string $packagePrefix = 'aim-admin';
     private string $viewsPath;
     private string $configPath;
     private string $routePath;

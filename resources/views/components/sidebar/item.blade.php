@@ -5,11 +5,11 @@
 @if ($sidebarItemHelper->isSubmenu($item))
 
     {{-- Treeview menu --}}
-    <x-aimadmin::sidebar.treeview :item="$item"/>
+    <x-aim-admin::sidebar.treeview :item="$item"/>
 
 @elseif ($sidebarItemHelper->isLink($item))
 
     {{-- Link --}}
-    <x-aimadmin::sidebar.link :item="$item"/>
+    <x-aim-admin::sidebar.link :item="$item"/>
 
 @endif

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace {{ namespace }};
 
@@ -24,14 +24,12 @@ class {{ class }} extends AbstractAimAdminController
         return $this->repo;
     }
 
-
     public function configureActions(): iterable
     {
         return [
 
         ];
     }
-
 
     public function configureForm()
     {
@@ -43,6 +41,18 @@ class {{ class }} extends AbstractAimAdminController
             ->setName('form_name')
             ->setMethod('post')
             ->setActionUrl(route('set_route'));
+    }
+
+    public function create()
+    {
+        $this->initCreate();
+        return view('aim-admin::create');
+    }
+
+    public function store(Request $request): RedirectResponse
+    {
+        $this->initStore($request);
+
     }
 
     public function configureFilter(): void
@@ -57,42 +67,24 @@ class {{ class }} extends AbstractAimAdminController
     public function list()
     {
         $this->initGrid(['id'], pagination: 10);
-        return view('aimadmin::list');
+        return view('aim-admin::list');
     }
 
     public function show($id)
     {
         $this->initShow($id, ['id', 'created_at']);
-        return view('aimadmin::show');
+        return view('aim-admin::show');
     }
 
     public function edit($id)
     {
         $this->initEdit($id);
-        return view('aimadmin::edit');
+        return view('aim-admin::edit');
     }
 
     public function delete($id)
     {
-        echo $id;
-        exit();
-    }
-
-    public function create()
-    {
-        $this->initCreate();
-        return view('aimadmin::create');
-    }
-
-    public function store(Request $request): RedirectResponse
-    {
-        $this->initStore($request);
-
-    }
-
-    public function showDetails($id)
-    {
-
+     // Set your delete functionality
     }
 
 }

@@ -38,7 +38,7 @@ final class ChoiceField implements FieldInterface
         !$choiceList && throw new \InvalidArgumentException(self::LIST . ':[] is a mandatory  parameter');
         return (new self($type, $choiceList))
             ->setName($name)
-            ->setComponent('aimadmin::crudboard.fields.choice')
+            ->setComponent('aim-admin::crudboard.fields.choice')
             ->setLabel($label ?? self::humanizeString($name))
             ->setCustomOption(self::LIST, $choiceList)
             ->setCustomOption(self::EMPTY, $empty)

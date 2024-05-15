@@ -1,5 +1,5 @@
  <div class="content">
-     <x-aimadmin::grid-filter />
+     <x-aim-admin::grid-filter />
      <div class="card">
          <div class="card-header">
              <h3 class="card-title">
@@ -90,7 +90,7 @@
 
                      </tbody>
                  </table>
-                 <x-aimadmin::crudboard.pagination :data="$grid->getGridData()" />
+                 <x-aim-admin::crudboard.pagination :data="$grid->getGridData()" />
              </div>
      </div>
  </div>

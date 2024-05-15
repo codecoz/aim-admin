@@ -13,7 +13,7 @@ class RegistrationController extends Controller
 {
     public function registration()
     {
-        return view('aimadmin::auth.register');
+        return view('aim-admin::auth.register');
     }
 
     public function register(RegisterRequest $request): RedirectResponse

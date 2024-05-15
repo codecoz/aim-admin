@@ -30,7 +30,7 @@ final class InputField implements FieldInterface
         $value = isset($params[1]) ? $params[1] : (isset($params['value']) ? $params['value'] : null);
         return (new self())
             ->setName($name)
-            ->setComponent('aimadmin::crudboard.fields.input')
+            ->setComponent('aim-admin::crudboard.fields.input')
             ->setHtmlElementName('input')
             ->setPlaceholder($label ?? self::humanizeString($name))
             ->setInputType($type)

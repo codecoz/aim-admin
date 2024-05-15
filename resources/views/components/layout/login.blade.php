@@ -21,13 +21,13 @@
     {{ $slot }}
 
     @if (session('success'))
-        <x-aimadmin::toast type="success" message="{{ session('success') }}"/>
+        <x-aim-admin::toast type="success" message="{{ session('success') }}"/>
     @elseif(session('info'))
-        <x-aimadmin::toast type="info" message="{{ session('info') }}"/>
+        <x-aim-admin::toast type="info" message="{{ session('info') }}"/>
     @elseif(session('warning'))
-        <x-aimadmin::toast type="warning" message="{{ session('warning') }}"/>
+        <x-aim-admin::toast type="warning" message="{{ session('warning') }}"/>
     @elseif(session('error'))
-        <x-aimadmin::toast type="error" message="{{ session('error') }}"/>
+        <x-aim-admin::toast type="error" message="{{ session('error') }}"/>
     @endif
 </main>
 @stack('scripts')

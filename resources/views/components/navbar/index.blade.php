@@ -36,12 +36,12 @@
         </li>
 
         <!-- Messages Dropdown Menu -->
-        {{--    <x-aimadmin::message/>--}}
+        {{--    <x-aim-admin::message/>--}}
 
         <!-- Notification Dropdown Menu -->
-        {{--    <x-aimadmin::notification/>--}}
+        {{--    <x-aim-admin::notification/>--}}
 
-        <x-aimadmin::navbar.user-menu/>
+        <x-aim-admin::navbar.user-menu/>
 
         <li class="nav-item">
             <a class="nav-link" data-widget="fullscreen" href="#" role="button">

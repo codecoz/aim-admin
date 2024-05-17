@@ -3,12 +3,14 @@
 namespace {{ namespace }};
 
 use Illuminate\Http\Request;
-use CodeCoz\AimAdmin\Controller\AbstractAimAdminController;
-use App\Contracts\Repositories\{{ cleanName }}RepositoryInterface;
 use Illuminate\Http\RedirectResponse;
+
+use CodeCoz\AimAdmin\Controller\AbstractAimAdminController;
 use CodeCoz\AimAdmin\Field\IdField;
-use App\Contracts\Services\{{ cleanName }}ServiceInterface;
 use CodeCoz\AimAdmin\Field\TextField;
+
+use App\Contracts\Repositories\{{ cleanName }}RepositoryInterface;
+use App\Contracts\Services\{{ cleanName }}ServiceInterface;
 
 class {{ class }} extends AbstractAimAdminController
 {

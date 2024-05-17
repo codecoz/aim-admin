@@ -5,6 +5,7 @@ namespace CodeCoz\AimAdmin\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 use Symfony\Component\Console\Input\InputArgument;
+
 class AimAdminCommand extends Command
 {
     /**
@@ -108,6 +109,7 @@ class AimAdminCommand extends Command
         $this->createRepository($name);
         $this->createService($name);
         $this->createRequest($name);
+        $this->addToRoute($name);
     }
 
     /**

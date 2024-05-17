@@ -2,7 +2,6 @@
 
 namespace {{ namespace }};
 
-use Illuminate\Support\Collection;
 use App\Models\{{ tableModel }};
 use {{ repoContractsNamespace }}\{{ class }}Interface;
 use CodeCoz\AimAdmin\Contracts\Service\CrudBoard\CrudGridLoaderInterface;

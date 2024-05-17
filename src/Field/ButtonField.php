@@ -19,7 +19,6 @@ use CodeCoz\AimAdmin\Dto\CrudBoard\ActionDto;
  *
  * @author CodeCoz <contact@codecoz.com>
  */
-
 final class ButtonField
 {
     public const DELETE = 'delete';
@@ -42,8 +41,10 @@ final class ButtonField
     }
 
     /**
-     * @param mixed       $label Use FALSE to hide the label; use NULL to autogenerate it
-     * @param string|null $icon  The full CSS classes of the FontAwesome icon to render (see https://fontawesome.com/v6/search?m=free)
+     * @param string $name
+     * @param mixed $label Use FALSE to hide the label; use NULL to autogenerate it
+     * @param mixed ...$prarms
+     * @return ButtonField
      */
     public static function init(string $name, ?string $label = null, mixed ...$prarms): self
     {
@@ -53,14 +54,14 @@ final class ButtonField
         $dto->setValue($name);
         $dto->setLabel($label);
         $dto->setComponent('aim-admin::crudboard.actions.grid-button');
-        switch($name){
+        switch ($name) {
             case self::EDIT :
                 $dto->setIcon('fa-pen-to-square');
                 $dto->setCssClass('btn btn-block btn-sm btn-primary');
                 break;
             case self::DELETE :
                 $dto->setIcon('fa-times');
-                $dto->setOption('role',ActionDto::GRID_DELETE_ACTION);
+                $dto->setOption('role', ActionDto::GRID_DELETE_ACTION);
                 $dto->setCssClass('btn btn-block btn-sm btn-danger');
                 $dto->setComponent('aim-admin::crudboard.actions.grid-delete-button');
                 break;
@@ -167,12 +168,12 @@ final class ButtonField
     public function removeCssClass(string $cssClass): self
     {
         $classStr = $this->dto->getCssClass();
-        if($classStr) {
-            $classes = explode(' ',$classStr);
-            $newClasses = array_filter($classes, function($value) use($cssClass){
+        if ($classStr) {
+            $classes = explode(' ', $classStr);
+            $newClasses = array_filter($classes, function ($value) use ($cssClass) {
                 return (trim($value) != $cssClass);
             });
-            $this->dto->setCssClass(implode(' ',$newClasses));
+            $this->dto->setCssClass(implode(' ', $newClasses));
         }
         return $this;
     }
@@ -265,21 +266,21 @@ final class ButtonField
         return $this->dto;
     }
 
-    public function setStyle(string $style) : self
+    public function setStyle(string $style): self
     {
-        $this->dto->setHtmlAttribute('style',$style);
+        $this->dto->setHtmlAttribute('style', $style);
         return $this;
     }
 
-    public function addStyle(string $style) : self
+    public function addStyle(string $style): self
     {
-        $this->dto->addHtmlAttributes(['style'=>$style]);
+        $this->dto->addHtmlAttributes(['style' => $style]);
         return $this;
     }
 
-    public function setTitle(string $title) : self
+    public function setTitle(string $title): self
     {
-        $this->dto->setHtmlAttribute('title',$title);
+        $this->dto->setHtmlAttribute('title', $title);
         return $this;
     }
 

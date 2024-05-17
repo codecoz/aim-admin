@@ -17,7 +17,7 @@ final class OptionValueStore implements Countable
 {
     private array $container = [];
 
-    protected $delimiter = '.';
+    protected string $delimiter = '.';
 
     private function __construct(array $options, $delimiter)
     {
@@ -35,7 +35,7 @@ final class OptionValueStore implements Countable
         return $this->container;
     }
 
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -44,7 +44,7 @@ final class OptionValueStore implements Countable
         }
     }
 
-    protected function exists($array, $key)
+    protected function exists($array, $key): bool
     {
         return \array_key_exists($key, $array);
     }
@@ -59,7 +59,7 @@ final class OptionValueStore implements Countable
         return 0 === $this->count();
     }
 
-    public function has($keys)
+    public function has($keys): bool
     {
         $keys = (array)$keys;
 
@@ -96,7 +96,7 @@ final class OptionValueStore implements Countable
             return $this->container[$key];
         }
 
-        if (\strpos($key, $this->delimiter) === false) {
+        if (!\str_contains($key, $this->delimiter)) {
             return $default;
         }
 

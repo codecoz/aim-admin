@@ -38,7 +38,7 @@ final class TextareaField implements FieldInterface
             ->setLabel($label)
             ->setCustomOption(self::ROW, $finalParams[self::ROW])
             ->setPlaceholder($label)
-            ->setAttribute('id', $name);;
+            ->setAttribute('id', $name);
     }
 
     public function setNumOfRows(int $rows): self

@@ -33,7 +33,7 @@ final class TextField implements FieldInterface
             ->setPlaceholder($label ?? self::humanizeString($name))
             ->setInputType('text')
             ->setLabel($label ?? self::humanizeString($name))
-            ->setAttribute('id', $name);;
+            ->setAttribute('id', $name);
     }
 
 

@@ -12,9 +12,6 @@
 namespace CodeCoz\AimAdmin\Dto\CrudBoard;
 
 
-use CodeCoz\AimAdmin\Contracts\Field\FieldInterface;
-
-
 /**
  * This class is for action DTO of grid board .
  *
@@ -25,7 +22,8 @@ final class ActionDto extends AbstractHtmlElementDto
     private ?string $type = null;
     private $url;
     private ?string $routeName = null;
-    private array $routeParameters = [];
+    private $routeParameters = [];
+
     public function getType(): string
     {
         return $this->type;
@@ -106,5 +104,11 @@ final class ActionDto extends AbstractHtmlElementDto
         return self::TYPE_FILTER === $this->type;
     }
 
+    public function isButton(): bool
+    {
+        return $this->getHtmlElement() == 'button';
+    }
+
 
 }
+

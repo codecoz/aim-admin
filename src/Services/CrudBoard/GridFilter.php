@@ -11,6 +11,7 @@
 
 namespace CodeCoz\AimAdmin\Services\CrudBoard;
 
+use CodeCoz\AimAdmin\Field\ButtonField;
 use CodeCoz\AimAdmin\Form\AbstractForm;
 use CodeCoz\AimAdmin\Collection\ActionCollection;
 use Illuminate\Support\Facades\Request;
@@ -26,7 +27,7 @@ class GridFilter extends AbstractForm
 
     public function getActions(): ActionCollection
     {
-        return $this->actions->getFilterActions();
+        return $this->actions;
     }
 
     public function assignQueryData(): self
@@ -47,5 +48,27 @@ class GridFilter extends AbstractForm
         return array_filter($data);
     }
 
+    public function setActions(array $actions): static
+    {
+        $dtos = [];
+        foreach ($actions as $action) {
+            $dto = $action->getDto();
+            $dto->isFilterAction() && $dtos[] = $dto;
+        }
+        if (empty($dtos)) {
+            $actions = [
+                ButtonField::init('Search', 'Search')->createAsFilterSubmitAction()
+                    ->setIcon('fa-search'),
+                ButtonField::init('reset', 'Reset')->createAsFilterAction()
+                    ->displayAsButton()->setHtmlAttributes(['type' => 'reset']),
+            ];
+            foreach ($actions as $action) {
+                $dto = $action->getDto();
+                $dto->isFilterAction() && $dtos[] = $dto;
+            }
+        }
+        $this->actions = ActionCollection::init($dtos);
+        return $this;
+    }
 
 }

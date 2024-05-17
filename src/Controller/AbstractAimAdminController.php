@@ -7,11 +7,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use CodeCoz\AimAdmin\Support\Facades\CrudBoardFacade;
 use CodeCoz\AimAdmin\Contracts\Service\CrudBoard\CrudGridInterface;
-use CodeCoz\AimAdmin\Field\ButtonField;
 use CodeCoz\AimAdmin\Form\CrudForm;
 
 abstract class AbstractAimAdminController extends Controller implements AimAdminControllerInterface
 {
+    private ?array $actionList = null;
 
     public function configureFormField(): iterable
     {
@@ -23,34 +23,39 @@ abstract class AbstractAimAdminController extends Controller implements AimAdmin
         return [];
     }
 
+
     public function configureGridRowActions(): iterable
     {
         return [];
     }
 
+
     public function initGrid(array $columns, mixed ...$params): CrudGridInterface
     {
+        $this->actionList = $this->actionList ?? $this->configureActions();
         $grid = CrudBoardFacade::createGrid($this->getRepository(), $params)
             ->addColumns($columns)
-            ->addActions($this->configureActions());
+            ->addActions($this->actionList);
         $this->configureFilter();
         return $grid;
     }
 
     protected function getForm(array $fields)
     {
+        $this->actionList = $this->actionList ?? $this->configureActions();
         return CrudBoardFacade::createForm($fields)
             ->setFormStat(CrudForm::STAT_NEW)
-            ->setActions($this->configureActions());
+            ->setActions($this->actionList);
     }
 
     protected function getFilter(array $fields)
     {
+        $this->actionList = $this->actionList ?? $this->configureActions();
         return CrudBoardFacade::getGrid()
             ->getFilter()
             ->addFields($fields)
             ->setFormStat(CrudForm::STAT_NEW)
-            ->setActions($this->configureActions())
+            ->setActions($this->actionList)
             ->assignQueryData();
     }
 
@@ -72,11 +77,6 @@ abstract class AbstractAimAdminController extends Controller implements AimAdmin
     protected function getDefaultCrudActions(): iterable
     {
         return [
-            ButtonField::init(ButtonField::EDIT)->linkToRoute('customer_edit')->addCssClass('fa-file-lines'),
-            ButtonField::init(ButtonField::DELETE)->linkToRoute('customer_delete'),
-            ButtonField::init(ButtonField::DETAIL)->linkToRoute('customer_detail'),
-            ButtonField::init('new', 'new')->linkToRoute('customer_create')->createAsCrudBoardAction(),
-            // ButtonField::init('other')->linkToRoute('other_link')->addCssClass('btn-secondary')->setIcon('fa-pencil')
 
         ];
     }
@@ -93,9 +93,10 @@ abstract class AbstractAimAdminController extends Controller implements AimAdmin
 
     protected function initShow(int|string $id, array $fields)
     {
+        $this->actionList = $this->actionList ?? $this->configureActions();
         return CrudBoardFacade::setRepository($this->getRepository())
             ->createShow($id, $fields)
-            ->addActions($this->configureActions());
+            ->addActions($this->actionList);
     }
 
     public function configureActions(): iterable
@@ -103,5 +104,5 @@ abstract class AbstractAimAdminController extends Controller implements AimAdmin
         return $this->getDefaultCrudActions();
     }
 
-
 }
+

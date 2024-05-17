@@ -1,5 +1,10 @@
-<div class="card">
-    <div class="card-header">
+@php
+    $filters = request()->get('filters') ?? [];
+    $isFilterAvailable = implode(null, $filters);
+@endphp
+
+<div class="card @if(!$isFilterAvailable) collapsed-card @endif">
+    <div class="card-header" data-card-widget="collapse" style="cursor: pointer;">
         <h3 class="card-title"><i class="fas fa-search"> </i>
             @if($filter->getTitle())
                 {{ $filter->getTitle() }}
@@ -9,10 +14,7 @@
         </h3>
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                <i class="fas fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove">
-                <i class="fas fa-times"></i>
+                <i class="fas fa-plus"></i>
             </button>
         </div>
     </div>
@@ -27,11 +29,13 @@
                 @endforeach
             </div>
             <div class="flex">
-                <button type="submit" class="btn btn-success float-right">
-                    <i class="fas fa-search"> </i> Search
-                </button>
+                @foreach($filter->getActions()->getFilterActions() as $action)
+                    @if($action->shouldBeDisplayedFor(null))
+                        @php $htmlActionAttributes = $action->getAttributesAsHtml() ; @endphp
+                        <x-dynamic-component :component="$action->getComponent()" :$action :$htmlActionAttributes/>
+                    @endif
+                @endforeach
             </div>
-            <a href="" class="btn btn-secondary"> Reset</a>
         </form>
     </div>
 </div>

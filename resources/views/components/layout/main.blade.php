@@ -64,6 +64,9 @@
     <x-aim-admin::right-sidebar/>
     <!-- /.control-sidebar -->
 
+    <!-- Added Modal -->
+    <x-aim-admin::utils.modal></x-aim-admin::utils.modal>
+
     <!-- Main Footer -->
     <x-aim-admin::footer/>
 

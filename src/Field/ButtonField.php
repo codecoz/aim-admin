@@ -303,4 +303,11 @@ final class ButtonField
             ->title(true)
             ->toString();
     }
+
+    public function asModal(): self
+    {
+        $this->dto->setHtmlAttributes(['data-target' => '#cc-modal', 'data-toggle' => 'modal']);
+        $this->dto->setCssClass(trim($this->dto->getCssClass() . ' cc-modal'));
+        return $this;
+    }
 }

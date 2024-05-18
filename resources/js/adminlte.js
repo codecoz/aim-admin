@@ -22,6 +22,9 @@ import "./modules/select2";
 //Button Loader
 import "./modules/buttonloader";
 
+//Modal Loader
+import "./modules/modal";
+
 //Ajax request
 import "./modules/ajaxrequest";
 

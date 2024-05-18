@@ -247,14 +247,12 @@ final class ButtonField
     {
 
         $this->dto->setUrl($url);
-
         return $this;
     }
 
     public function displayIf(callable $callable): self
     {
         $this->dto->setDisplayCallable($callable);
-
         return $this;
     }
 

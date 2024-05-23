@@ -2,6 +2,7 @@
 
 namespace CodeCoz\AimAdmin;
 
+use CodeCoz\AimAdmin\Console\UpgradeAimAdminCommand;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
@@ -208,6 +209,7 @@ class AdminServiceProvider extends ServiceProvider
     {
         $this->commands([
             InstallAimAdminCommand::class,
+            UpgradeAimAdminCommand::class,
             MakeAimController::class,
             MakeAimRepositoryInterface::class,
             MakeAimServiceInterface::class,

@@ -1430,5 +1430,22 @@ class Helper
     {
         request()->attributes->set($key, $value);
     }
+
+    static function requiredPackages(): array
+    {
+        return [
+            "@fortawesome/fontawesome-free" => "~6.5.2",
+            "admin-lte" => "~3.2.0",
+            "chart.js" => "~4.4.3",
+            "jquery" => "~3.7.1",
+            "flatpickr" => "~4.6.13",
+            "sweetalert2" => "~11.11.0",
+            "jstree" => "~3.3.16",
+            "laravel-vite-plugin" => "~1.0.4",
+            "vite-plugin-static-copy" => "~1.0.5",
+            "sass" => "~1.77.2",
+            "vite" => "~5.2.11"
+        ];
+    }
 }
 

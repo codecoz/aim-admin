@@ -2,6 +2,7 @@
 
 namespace CodeCoz\AimAdmin\Console;
 
+use CodeCoz\AimAdmin\Helpers\Helper;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 use CodeCoz\AimAdmin\Admin;
@@ -132,18 +133,7 @@ class InstallAimAdminCommand extends Command
     {
         $packagesFile = json_decode(file_get_contents(base_path('package.json')), true);
 
-        $requiredPackages = [
-            "@fortawesome/fontawesome-free" => "^6.5.2",
-            "admin-lte" => "^3.2.0",
-            "chart.js" => "^4.2.0",
-            "jquery" => "^3.7.0",
-            "flatpickr" => "^4.6.13",
-            "sweetalert2" => "^11.8.0",
-            "laravel-vite-plugin" => "^1.0.0",
-            "vite-plugin-static-copy" => "^1.0.3",
-            "sass" => "^1.74.1",
-            "vite" => "^5.0.0",
-        ];
+        $requiredPackages = Helper::requiredPackages();
 
         // Combine existing dependencies and devDependencies
         $existingPackages = array_merge(

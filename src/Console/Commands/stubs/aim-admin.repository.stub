@@ -2,6 +2,8 @@
 
 namespace {{ namespace }};
 
+use Illuminate\Database\Eloquent\Builder;
+
 use App\Models\{{ tableModel }};
 use {{ repoContractsNamespace }}\{{ class }}Interface;
 use CodeCoz\AimAdmin\Contracts\Service\CrudBoard\CrudGridLoaderInterface;
@@ -17,11 +19,14 @@ class {{ class }}  extends AbstractAimAdminRepository implements {{ class }}Inte
 
    public function getGridQuery(): ?Builder
    {
-       return {{ tableModel }}::query();
+       return {{ tableModel }}::query()->orderBy('created_at', 'desc');
    }
 
    public function applyFilterQuery(Builder $query, array $filters): Builder
    {
+       // $filters_name = isset($filters['name']) ? $filters['name'] : "";
+       // $query->where(DB::raw('lower(name)'), 'like', '%'.strtolower($filters_name).'%');
+
        return parent::applyFilterQuery($query, $filters);
    }
 

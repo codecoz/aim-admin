@@ -34,7 +34,6 @@
             "CodeCoz\\AimAdmin\\Tests\\": "tests"
         },
         "classmap": [
-            "tests/TestView.php",
             "tests/ComponentTestCase.php"
         ]
     },

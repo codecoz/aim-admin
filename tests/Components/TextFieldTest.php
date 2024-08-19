@@ -6,9 +6,23 @@ namespace CodeCoz\AimAdmin\Tests\Components;
 
 use CodeCoz\AimAdmin\Field\TextField;
 use CodeCoz\AimAdmin\Tests\ComponentTestCase;
+use CodeCoz\AimAdmin\Tests\Traits\InteractsWithViews;
 
 class TextFieldTest extends ComponentTestCase
 {
+    use InteractsWithViews;
+
+    /** @test */
+    public function it_initializes_with_correct_attributes()
+    {
+        $component = TextField::init('name', 'Input Name');
+
+        $this->assertEquals('name', $component->getDto()->getName());
+        $this->assertEquals('Input Name', $component->getDto()->getLabel());
+        $this->assertEquals('text', $component->getDto()->getInputType());
+        $this->assertEquals('input', $component->getDto()->getHtmlElement());
+        $this->assertEquals('name', $component->getDto()->getHtmlAttributes()->get('id'));
+    }
     /** @test */
     public function the_text_filed_component_can_be_rendered()
     {
@@ -91,5 +105,6 @@ class TextFieldTest extends ComponentTestCase
         $component = TextField::init('name', 'input-name');
         $this->assertEquals('aim-admin::crudboard.fields.input', $component->getDto()->getComponent());
     }
+
 
 }

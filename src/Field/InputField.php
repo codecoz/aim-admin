@@ -26,8 +26,8 @@ final class InputField implements FieldInterface
 
     public static function init(string $name, ?string $label = null, ...$params): self
     {
-        $type = isset($params[0]) ? $params[0] : (isset($params['type']) ? $params['type'] : 'text');
-        $value = isset($params[1]) ? $params[1] : (isset($params['value']) ? $params['value'] : null);
+        $type = $params[0] ?? ($params['type'] ?? 'text');
+        $value = $params[1] ?? ($params['value'] ?? null);
         return (new self())
             ->setName($name)
             ->setComponent('aim-admin::crudboard.fields.input')

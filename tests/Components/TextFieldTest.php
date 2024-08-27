@@ -7,13 +7,14 @@ namespace CodeCoz\AimAdmin\Tests\Components;
 use CodeCoz\AimAdmin\Field\TextField;
 use CodeCoz\AimAdmin\Tests\ComponentTestCase;
 use CodeCoz\AimAdmin\Tests\Traits\InteractsWithViews;
+use PHPUnit\Framework\Attributes\Test;
 
 class TextFieldTest extends ComponentTestCase
 {
     use InteractsWithViews;
 
-    /** @test */
-    public function it_initializes_with_correct_attributes()
+
+    #[Test] public function it_initializes_with_correct_attributes()
     {
         $component = TextField::init('name', 'Input Name');
 
@@ -23,52 +24,50 @@ class TextFieldTest extends ComponentTestCase
         $this->assertEquals('input', $component->getDto()->getHtmlElement());
         $this->assertEquals('name', $component->getDto()->getHtmlAttributes()->get('id'));
     }
-    /** @test */
-    public function the_text_filed_component_can_be_rendered()
+
+    #[Test] public function the_text_filed_component_can_be_rendered()
     {
         $component = TextField::init('name', 'input-name');
         $this->assertInstanceOf(TextField::class, $component);
     }
 
-    /** @test */
-    public function it_sets_the_html_element_as_input()
+
+    #[Test] public function it_sets_the_html_element_as_input()
     {
         $component = TextField::init('name', 'input-name');
         $this->assertEquals('input', $component->getDto()->getHtmlElement());
     }
 
-    /** @test */
-    public function it_sets_the_placeholder_attribute()
+
+    #[Test] public function it_sets_the_placeholder_attribute()
     {
         $component = TextField::init('name', 'input-name')->setPlaceholder('Placeholder');
         $this->assertEquals('Placeholder', $component->getDto()->getHtmlAttributes()->get('placeholder'));
     }
 
-    /** @test */
-    public function it_sets_the_id_attribute()
+
+    #[Test] public function it_sets_the_id_attribute()
     {
         $component = TextField::init('name', 'input-name');
         $this->assertEquals('name', $component->getDto()->getHtmlAttributes()->get('id'));
     }
 
 
-    /** @test */
-    public function it_assigns_the_label_correctly()
+    #[Test] public function it_assigns_the_label_correctly()
     {
         $component = TextField::init('name', 'Label');
         $this->assertEquals('Label', $component->getDto()->getLabel());
     }
 
 
-    /** @test */
-    public function it_defaults_to_not_required()
+    #[Test] public function it_defaults_to_not_required()
     {
         $component = TextField::init('name', 'input-name');
         $this->assertFalse($component->getDto()->isRequired());
     }
 
-    /** @test */
-    public function it_handles_custom_options()
+
+    #[Test] public function it_handles_custom_options()
     {
         $component = TextField::init('name', 'input-name')
             ->setCustomOption('data-custom', 'value');
@@ -76,15 +75,14 @@ class TextFieldTest extends ComponentTestCase
     }
 
 
-    /** @test */
-    public function it_defaults_css_class_to_empty_string()
+    #[Test] public function it_defaults_css_class_to_empty_string()
     {
         $component = TextField::init('name', 'input-name');
         $this->assertEquals('', $component->getDto()->getCssClass());
     }
 
-    /** @test */
-    public function it_stores_html_attributes_correctly()
+
+    #[Test] public function it_stores_html_attributes_correctly()
     {
         $component = TextField::init('name', 'input-name')
             ->setHtmlAttributes(['data-test' => 'test-value']);
@@ -92,15 +90,14 @@ class TextFieldTest extends ComponentTestCase
     }
 
 
-    /** @test */
-    public function it_sets_the_layout_class_correctly()
+    #[Test] public function it_sets_the_layout_class_correctly()
     {
         $component = TextField::init('name', 'input-name');
         $this->assertEquals('col-lg-6', $component->getDto()->getLayoutClass());
     }
 
-    /** @test */
-    public function it_sets_the_component_template_correctly()
+
+    #[Test] public function it_sets_the_component_template_correctly()
     {
         $component = TextField::init('name', 'input-name');
         $this->assertEquals('aim-admin::crudboard.fields.input', $component->getDto()->getComponent());

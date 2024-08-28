@@ -68,7 +68,7 @@ abstract class AbstractCrudBoard implements CrudBoardInterface
     }
 
 
-    public function createShow(string|int $id, array $fields)
+    public function createShow(string|int $id, array $fields) : CrudShow
     {
         $record = $this->getRecordForShow($id);
         if ($record === null) {

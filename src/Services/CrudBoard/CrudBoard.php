@@ -46,4 +46,5 @@ final class CrudBoard extends AbstractCrudBoard
     {
         return $this->getRepository()->crudShow($id);
     }
+
 }

@@ -5,7 +5,6 @@ namespace CodeCoz\AimAdmin\Tests\Traits;
 
 use CodeCoz\AimAdmin\Tests\TestView;
 use Illuminate\Contracts\Container\BindingResolutionException;
-use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Facades\View as ViewFacade;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Str;

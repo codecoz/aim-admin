@@ -10,7 +10,7 @@ use Gajus\Dindent\Exception\RuntimeException;
 use Gajus\Dindent\Indenter;
 use Orchestra\Testbench\TestCase;
 
-abstract class ComponentTestCase extends TestCase
+class ComponentTestCase extends TestCase
 {
     protected function setUp(): void
     {

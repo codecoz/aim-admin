@@ -17,6 +17,7 @@
         "Admin"
     ],
     "require": {
+        "php": "^8.1",
         "illuminate/support": "~10|~11"
     },
     "require-dev": {
@@ -31,13 +32,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "CodeCoz\\AimAdmin\\Tests\\": "tests"
-        },
-        "classmap": [
-            "tests/ComponentTestCase.php",
-            "tests/TestView.php",
-            "tests/Traits/InteractsWithViews.php"
-        ]
+            "CodeCoz\\AimAdmin\\Tests\\": "tests/"
+        }
     },
     "extra": {
         "laravel": {

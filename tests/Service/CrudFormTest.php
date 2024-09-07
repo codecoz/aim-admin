@@ -14,7 +14,7 @@ class CrudFormTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->form = new GridFilter();
+        $this->form = new CrudForm();
     }
 
     public function testFormField()

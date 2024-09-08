@@ -1,3 +1,15 @@
+![php-laravel](https://github.com/user-attachments/assets/a146f866-bbfc-4b65-939b-d36fe572227c)
+![developed-by-codecoz](https://github.com/user-attachments/assets/041fa195-e167-4b5f-97a7-0d7abf54e26f)
+
+<br />
+
+[![Latest Version](https://img.shields.io/packagist/v/codecoz/aim-admin?color=blue&label=release&style=for-the-badge)](https://packagist.org/packages/codecoz/aim-admin)
+[![Stars](https://img.shields.io/github/stars/codecoz/aim-admin?color=rgb%2806%20189%20248%29&label=stars&style=for-the-badge)](https://packagist.org/packages/codecoz/aim-admin)
+[![Total Downloads](https://img.shields.io/packagist/dt/codecoz/aim-admin.svg?color=rgb%28249%20115%2022%29&style=for-the-badge)](https://packagist.org/packages/codecoz/aim-admin)
+[![Forks](https://img.shields.io/github/forks/codecoz/aim-admin?color=rgb%28134%20115%2022%29&style=for-the-badge)](https://packagist.org/packages/codecoz/aim-admin)
+[![Issues](https://img.shields.io/github/issues/codecoz/aim-admin?color=rgb%28134%20239%20128%29&style=for-the-badge)](https://packagist.org/packages/codecoz/aim-admin)
+
+
 # AimAdmin - Laravel Admin Panel for Streamlined Development
 Welcome to AimAdmin, the ultimate Laravel admin panel plugin engineered to elevate developers' productivity and streamline development workflows. AimAdmin empowers Laravel developers to concentrate exclusively on crafting domain-specific features and functionalities by abstracting away the complexities of building admin UI/UX and common CRUD functionality. With seamless integration and an intuitive interface, AimAdmin accelerates project development without compromising quality or flexibility.
 # Key Benefits for Laravel Developers
@@ -12,6 +24,8 @@ Welcome to AimAdmin, the ultimate Laravel admin panel plugin engineered to eleva
 3. Configure your environment variables.
 4. Run migrations and seeders.
 5. Dive into crafting your application's unique features while AimAdmin handles administrative tasks seamlessly!
+
+![made-with-php](https://github.com/user-attachments/assets/9724ced2-d5a3-4756-99ae-f20457b7c706)
 
 # Contributions
 Join our vibrant community of developers and contribute to making Laravel development even more efficient and accessible. Whether it's through bug fixes, feature enhancements, or documentation improvements, your contributions to AimAdmin are valued and appreciated.

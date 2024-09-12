@@ -3,10 +3,8 @@
 namespace CodeCoz\AimAdmin\Tests\Service;
 
 use ArrayAccess;
-use CodeCoz\AimAdmin\Collection\FieldCollection;
 use CodeCoz\AimAdmin\Contracts\Repository\AimAdminRepositoryInterface;
 use CodeCoz\AimAdmin\Contracts\Service\CrudBoard\CrudBoardInterface;
-use CodeCoz\AimAdmin\Contracts\Service\CrudBoard\CrudGridInterface;
 use CodeCoz\AimAdmin\Contracts\Service\CrudBoard\CrudShowInterface;
 use CodeCoz\AimAdmin\Form\CrudForm;
 use CodeCoz\AimAdmin\Services\CrudBoard\CrudBoard;
@@ -39,7 +37,10 @@ class CrudBoardTest extends TestCase
     $this->assertSame(['test1','test2','test3'], $this->crudBoard->getParams());
    }
 
-   public function testCrudBoardService()
+    /**
+     * @throws \Exception
+     */
+    public function testCrudBoardService()
    {
         $stubRepo = new class() implements AimAdminRepositoryInterface
         {
@@ -77,7 +78,7 @@ class CrudBoardTest extends TestCase
                     }
 
                     public function offsetGet($offset): mixed {
-                        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+                        return $this->container[$offset] ?? null;
                     }
                 };
             }

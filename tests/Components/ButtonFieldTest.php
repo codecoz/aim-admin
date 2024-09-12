@@ -16,12 +16,6 @@ class ButtonFieldTest extends ComponentTestCase
         $this->assertInstanceOf(ButtonField::class, $component);
     }
 
-    #[Test] public function the_button_field_component_can_be_rendered()
-    {
-        $component = ButtonField::init('name', 'Create');
-        $this->assertInstanceOf(ButtonField::class, $component);
-    }
-
     #[Test] public function it_sets_the_html_element_as_anchor()
     {
         $component = ButtonField::init('name', 'Create');
@@ -51,7 +45,7 @@ class ButtonFieldTest extends ComponentTestCase
     #[Test] public function it_sets_the_css_class_correctly()
     {
         $component = ButtonField::init('name', 'Create');
-        $this->assertEquals('btn btn-block btn-primary btn-sm', $component->getDto()->getCssClass());
+        $this->assertEquals('btn btn-block btn-sm btn-primary', $component->getDto()->getCssClass());
     }
 
 

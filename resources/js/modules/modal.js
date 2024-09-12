@@ -1,4 +1,4 @@
-$(document).delegate(".cc-modal", "click", function (e) {
+$(document).delegate(".native-modal", "click", function (e) {
     e.preventDefault();
     const url = $(this).attr('href');
     $("#modal-body-content").load(url, function (response, status, xhr) {

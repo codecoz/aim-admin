@@ -6,7 +6,6 @@ use CodeCoz\AimAdmin\Collection\FormFieldCollection;
 use CodeCoz\AimAdmin\Services\CrudBoard\GridFilter;
 use Orchestra\Testbench\TestCase;
 
-
 class GridFilterTest extends TestCase
 {
     private GridFilter $filter;

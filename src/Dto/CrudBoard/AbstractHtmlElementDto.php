@@ -249,6 +249,7 @@ abstract class AbstractHtmlElementDto
         foreach ($attributes as $attr => $val) {
             $html .= $this->prepareHtmlAttributes($attr, $val);
         }
+        //  echo $html;
         return $html;
     }
 
@@ -272,7 +273,7 @@ abstract class AbstractHtmlElementDto
                 $this->placeholder = $val;
                 break;
             default:
-                $html = " $attr =  $val ";
+                $html = $attr . '="' . $val . '"';
         }
         return $html;
     }

@@ -3,6 +3,7 @@
 namespace CodeCoz\AimAdmin;
 
 use CodeCoz\AimAdmin\Console\UpgradeAimAdminCommand;
+use CodeCoz\AimAdmin\Providers\ViewServiceProvider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
@@ -59,6 +60,9 @@ class AdminServiceProvider extends ServiceProvider
 
         // Register the Repo service provider.
         $this->app->register(RepositoryServiceProvider::class);
+
+        // Register View Service Provider for inject Process
+        $this->app->register(ViewServiceProvider::class);
 
         // cd pa$this->callAfterResolving('blade.compiler', fn(BladeCompiler $bladeCompiler) => $this->registerBladeExtensions($bladeCompiler));
 

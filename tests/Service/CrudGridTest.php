@@ -7,17 +7,20 @@ use CodeCoz\AimAdmin\Contracts\Service\CrudBoard\CrudGridInterface;
 use CodeCoz\AimAdmin\Contracts\Service\CrudBoard\CrudGridLoaderInterface;
 use CodeCoz\AimAdmin\Services\CrudBoard\CrudGrid;
 use Orchestra\Testbench\TestCase;
+use PHPUnit\Framework\MockObject\Exception;
 
 
 class CrudGridTest extends TestCase
 {
-    private CrudGridLoaderInterface $crudGridLoader;
     private CrudGridInterface $crudGrid;
 
+    /**
+     * @throws Exception
+     */
     protected function setUp(): void
     {
-        $this->crudGridLoader = $this->createMock(CrudGridLoaderInterface::class);
-        $this->crudGrid =  CrudGrid::init($this->crudGridLoader,[]);
+        $crudGridLoader = $this->createMock(CrudGridLoaderInterface::class);
+        $this->crudGrid =  CrudGrid::init($crudGridLoader,[]);
     }
 
     public function testTitle()

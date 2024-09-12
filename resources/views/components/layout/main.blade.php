@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @if(isset($title))
-        <title>{{ env('APP_NAME').':: '.$title ?? 'Aim Admin' }}</title>
+        <title>{{ env('APP_NAME').':: '.$title ?? 'AimAdmin Platform' }}</title>
     @else
         <title>{{env('APP_NAME')}}</title>
     @endif
@@ -15,6 +15,9 @@
     </script>
     @vite('resources/js/app.js')
     @stack('styles')
+    @isset($injectedTop)
+        {!! $injectedTop !!}
+    @endisset
 </head>
 <body class="hold-transition sidebar-mini {{config('aim-admin.layout_class.body', '')}}">
 
@@ -72,20 +75,28 @@
 
 </div>
 <!-- ./wrapper -->
+@php $toastTime = config('aim-admin.flash-timer', 2000); @endphp
 @if (session('success'))
-    <x-aim-admin::toast type="success" message="{{ session('success') }}"/>
+    <x-aim-admin::toast type="success" message="{{ session('success') }}" timer="{{session('flash-timer')??$toastTime}}"/>
 @elseif((session('info')))
-    <x-aim-admin::toast type="info" message="{{ session('info') }}"/>
+    <x-aim-admin::toast type="info" message="{{ session('info') }}" timer="{{session('flash-timer')??$toastTime}}"/>
 @elseif((session('warning')))
-    <x-aim-admin::toast type="warning" message="{{ session('warning') }}"/>
+    <x-aim-admin::toast type="warning" message="{{ session('warning') }}" timer="{{session('flash-timer')??$toastTime}}"/>
 @elseif((session('error')))
-    <x-aim-admin::toast type="error" message="{{ session('error') }}"/>
+    @if(config('aim-admin.show_toast_error', true))
+        <x-aim-admin::toast type="error" message="{{ session('error') }}" timer="{{session('flash-timer')??$toastTime}}"/>
+    @endif
 @endif
-@if($errors->any())
-    @foreach ($errors->all() as $error)
-        <x-aim-admin::toast type="error" message="{{ $error }}"/>
-    @endforeach
+@if(config('aim-admin.show_toast_error', true))
+    @if($errors->any())
+        @foreach ($errors->all() as $error)
+            <x-aim-admin::toast type="error" message="{{ $error }}" timer="{{session('flash-timer')??$toastTime}}"/>
+        @endforeach
+    @endif
 @endif
 @stack('scripts')
+@isset($injectedBottom)
+    {!! $injectedBottom !!}
+@endisset
 </body>
 </html>

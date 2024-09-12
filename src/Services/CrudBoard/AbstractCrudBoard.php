@@ -9,6 +9,8 @@ use CodeCoz\AimAdmin\Contracts\Service\CrudBoard\CrudGridLoaderInterface;
 use CodeCoz\AimAdmin\Contracts\Service\CrudBoard\CrudShowInterface;
 use CodeCoz\AimAdmin\Form\AbstractForm;
 use CodeCoz\AimAdmin\Form\CrudForm;
+use Illuminate\Database\Eloquent\Model;
+
 
 abstract class AbstractCrudBoard implements CrudBoardInterface
 {
@@ -16,8 +18,6 @@ abstract class AbstractCrudBoard implements CrudBoardInterface
     private CrudGridInterface $grid;
     private AbstractForm $form;
     private CrudShowInterface $crudShow;
-    private int $pagination;
-
 
     abstract protected function getRecordForShow(int|string $id): ?\ArrayAccess;
 
@@ -67,10 +67,12 @@ abstract class AbstractCrudBoard implements CrudBoardInterface
         return $this->form;
     }
 
-
-    public function createShow(string|int $id, array $fields) : CrudShow
+    /**
+     * @throws \Exception
+     */
+    public function createShow(mixed $row, array $fields)
     {
-        $record = $this->getRecordForShow($id);
+        $record = ($row instanceof Model) ? $row :$this->getRecordForShow($row);
         if ($record === null) {
             throw new \Exception("No record is found for details");
         }
@@ -78,7 +80,7 @@ abstract class AbstractCrudBoard implements CrudBoardInterface
         return $this->crudShow;
     }
 
-    public function getCrudShow(): CrudShow
+    public function getCrudShow(): CrudShowInterface
     {
         return $this->crudShow;
     }

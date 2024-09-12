@@ -4,7 +4,7 @@
         <div class="card-header">
             <h5 class="card-title mb-0">
                 @if($form->getTitle() )
-                    {{$form->getTitle() }}
+                    {!! $form->getTitle() !!}
                 @else
                     {{ $attributes['title'] }}
                 @endif
@@ -12,7 +12,11 @@
         </div>
         <div class="card-body">
             <div id="alert"></div>
-            @include('aim-admin::alert.validation-error')
+
+            @if(config('aim-admin.show_inline_alert_box', true))
+                <x-aim-admin::utils.error :messages="$errors->all()" class="mt-2"/>
+            @endif
+
             <form name="{{$form->getName()}}" action="{{$form->getActionUrl()}}" method="{{$form->getMethod()}}"
                   class="{{$form->getCssClass()}}" {{ $form->getAttributesAsHtml() }}
                   @if($form->getFields()->hasFileInput())
@@ -22,7 +26,6 @@
                 <div class="row">
                     @foreach($form->getFields() as $field)
                         @php $htmlAttributes = $field->getAttributesAsHtml() ; @endphp
-
                         @if($field->isHiddenInput())
                             <x-dynamic-component :component="$field->getComponent()" :$field :$htmlAttributes/>
                         @else

@@ -1,33 +1,39 @@
 <label class="form-label" for="{{ $field->getName() }}">{{ $field->getLabel() }}  @if($field->isRequired())
-        <span class="required">*</span>
+        <span class="required text-red">*</span>
     @endif</label>
 @switch($field->getInputType())
     @case("radio")
     @case("checkbox")
-        @foreach ($field->getCustomOption('choiceList') as $key=>$value)
-            <label class="form-check form-check-inline">
-                <input {{ $field->getAttributesAsHtml() }} class="form-check-input {{ $field->getCssClass() }}"
-                       type="{{ $field->getInputType() }}" name="{{ $field->getName() }}" value="{{ $key }}"
-                       @if($values = old($field->getName(),$field->getValue()))
-                           @php
-                               $values = is_array($values) ? $values : [$values];
-                           @endphp
-                           @if(in_array($key,$values))
+        <div class="form-group clearfix">
+            @foreach ($field->getCustomOption('choiceList') as $key=>$value)
+                @php  $htmlAttributes = $field->getAttributesAsHtml(); @endphp
+                <div class="icheck-danger d-inline">
+                    <input {!!  $htmlAttributes !!} class="form-check-input {{ $field->getCssClass() }}"
+                           type="{{ $field->getInputType() }}" name="{{ $field->getName() }}" value="{{ $key }}"
+                           id="{{$key}}"
+                           @if($values = old($field->getName(),$field->getValue()))
+                               @php
+                                   $values = is_array($values) ? $values : [$values];
+                               @endphp
+                               @if(in_array($key,$values))
+                                   checked
+                           @endif
+                           @elseif($field->getCustomOption(CodeCoz\AimAdmin\Field\ChoiceField::SELECTED.".".$key) !==null )
                                checked
-                       @endif
-                       @elseif($field->getCustomOption(CodeCoz\AimAdmin\Field\ChoiceField::SELECTED.".".$key) !==null )
-                           checked
-                    @endif
-                    @disabled($field->isDisabled())
-                    @readonly($field->isReadonly())
-                >
-                <span class="form-check-label">{{ $value }}</span>
-            </label>
-        @endforeach
+                        @endif
+                        @disabled($field->isDisabled())
+                        @readonly($field->isReadonly())
+                    >
+                    <label for="{{$key}}">
+                        {{ $value }}
+                    </label>
+                </div>
+            @endforeach
+        </div>
         @break
     @default
-        <select {{ $field->getAttributesAsHtml() }} class="form-control {{ $field->getCssClass() }}"
-                name="{{ $field->getName() }}" id="{{ $field->getName() }}"
+        <select {!! $htmlAttributes !!} class="form-control {{ $field->getCssClass() }}" name="{{ $field->getName() }}"
+                id="{{ $field->getName() }}"
             @disabled($field->isDisabled())
             @readonly($field->isReadonly())
             @required($field->isRequired())
@@ -53,3 +59,9 @@
 
         </select>
 @endswitch
+@if($field->getHelp())
+    <span class="text-xs">{!! $field->getHelp() !!}</span>
+@endif
+
+<x-aim-admin::alert.inline-validation-error :errors="$errors->get($field->getName())" class="mt-1"/>
+

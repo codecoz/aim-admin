@@ -3,27 +3,31 @@
 * MIT Licensed.
 */
 (function ($) {
-    $('.has-spinner').attr("disabled", false);
     $.fn.buttonLoader = function (action) {
-        var self = $(this);
+        const selfBtn = $(this);
+
+        if (!selfBtn.hasClass('has-spinner')) {
+            selfBtn.addClass('has-spinner');
+        }
         if (action == 'start') {
-            if ($(self).attr("disabled") == "disabled") {
+            if (selfBtn.attr("disabled") == "disabled") {
+                console.log("Button already disabled");
                 return false;
             }
-            $('.has-spinner').attr("disabled", true);
-            $(self).attr('data-btn-text', $(self).text());
-            var text = 'Loading';
-            console.log($(self).attr('data-load-text'));
-            if($(self).attr('data-load-text') != undefined && $(self).attr('data-load-text') != ""){
-                var text = $(self).attr('data-load-text');
+            selfBtn.attr('disabled', true);
+            selfBtn.attr('data-btn-text', selfBtn.text());
+            let btnText = 'Loading...';
+            if (selfBtn.attr('data-load-text') != undefined && selfBtn.attr('data-load-text') != "") {
+                btnText = selfBtn.attr('data-load-text');
             }
-            $(self).html('<span class="spinner"><i class="fa fa-spinner fa-spin" title="button-loader"></i></span> '+text);
-            $(self).addClass('active');
+            selfBtn.html('<span><i class="fa fa-spinner fa-spin" title="button-loader"></i></span> ' + btnText);
+            selfBtn.addClass('active');
         }
         if (action == 'stop') {
-            $(self).html($(self).attr('data-btn-text'));
-            $(self).removeClass('active');
-            $('.has-spinner').attr("disabled", false);
+            selfBtn.html(selfBtn.attr('data-btn-text'));
+            selfBtn.removeClass('active');
+            selfBtn.attr('disabled', false);
         }
     }
 })(jQuery);
+

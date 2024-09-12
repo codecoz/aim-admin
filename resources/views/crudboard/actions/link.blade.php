@@ -1,6 +1,8 @@
 <a class="{{ $action->getCssClass() }}"
    @if($action->getRouteName())
        href="{{ route($action->getRouteName(),  $routeParams) }}"
+   @elseif($action->getUrl())
+       href="{{$action->getUrl()}}"
    @else
        href="#"
     @endif

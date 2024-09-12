@@ -24,10 +24,10 @@ final class FieldDto
     private mixed $value = null;
     private mixed $formattedValue = null;
     private $formatValueCallable;
-    private $label;
+    private string $label;
     private string $cssClass = '';
     private ?string $textAlign = null;
-    private $help;
+    private ?string $help;
     private ?bool $sortable = null;
     private ?bool $virtual = null;
     private ?string $component = null;
@@ -36,7 +36,7 @@ final class FieldDto
     private ?string $inputType = null;
     private OptionValueStore $customOptions;
     private string $validationRule = '';
-    private ?string $placeholder = null;
+    private string $placeholder;
     private OptionValueStore $htmlAttributes;
 
     public function __construct()

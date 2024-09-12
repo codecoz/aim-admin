@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Aim Admin package.
+ * This file is part of the AimAdmin package.
  *
  * (c) CodeCoz <contact@codecoz.com>
  *
@@ -20,21 +20,23 @@ use CodeCoz\AimAdmin\Contracts\Service\CrudBoard\CrudGridLoaderInterface;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
+use CodeCoz\AimAdmin\Dto\CrudBoard\FieldDto;
+use CodeCoz\AimAdmin\Field\Field;
 
 /**
  * This class implement  AimAdmin CRUD grid Interface .
  * It is responsible to generate grid/table view.
  *
- * @author CodeCoz <contact@codecoz.com>
+ * @author Muhammad Abdullah Ibne Masud <abdullah.masud@banglalink.net>
  */
 final class CrudGrid implements CrudGridInterface
 {
     private ?string $title = null;
+    private ?bool $disableSerialColumn = false;
     private FieldCollection $fields;
     private ActionCollection $actions;
     private GridFilter $filter;
     private GridPaginator $paginator;
-    private array $loaderParams = [];
     private ?LengthAwarePaginator $gridData = null;
     private array $config = [
         'actionHeader' => 'Action',
@@ -93,7 +95,7 @@ final class CrudGrid implements CrudGridInterface
         return $this;
     }
 
-    public function getColumns()
+    public function getColumns(): FieldCollection
     {
         return $this->fields;
     }
@@ -162,4 +164,33 @@ final class CrudGrid implements CrudGridInterface
     {
         return $this->config['tableCssClass'];
     }
+
+    public function isDisableSerialColumn(): ?bool
+    {
+        return $this->disableSerialColumn;
+    }
+
+    public function disableSerialColumn(bool $disable = true): void
+    {
+        $this->disableSerialColumn = $disable;
+    }
+
+    public function enableIdCheckBox(FieldDto $fieldDto = null): void
+    {
+        $this->disableSerialColumn();
+
+        $field = Field::init('id')->setLabel("
+            <div class='icheck-danger'>
+                <input type='checkbox' id='select-all-checkbox-id'>
+                <label for='select-all-checkbox-id' class='ml-2'>#</label>
+            </div>
+             ")->setComponent('aim-admin::field.id')
+            ->getDto();
+
+        // Use the provided FieldDto if given, otherwise use the one created above
+        $fieldDto = $fieldDto ?? $field;
+
+        $this->fields->prepend($fieldDto);
+    }
+
 }

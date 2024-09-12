@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of the Aim Admin package.
+ * This file is part of the AimAdmin package.
  *
  * (c) CodeCoz <contact@codecoz.com>
  *
@@ -19,7 +19,7 @@ use Illuminate\Support\Collection;
 /**
  * This is an abstract form  class for crud board
  *
- * @author CodeCoz <contact@codecoz.com>
+ * @author Muhammad Abdullah Ibne Masud <abdullah.masud@banglalink.net>
  */
 class GridPaginator
 {
@@ -30,7 +30,7 @@ class GridPaginator
 
     public function paginate(Collection $data, $options = []): LengthAwarePaginator
     {
-        $page = Paginator::resolveCurrentPage() ?? 1;
+        $page = Paginator::resolveCurrentPage();
         return new LengthAwarePaginator($data->forPage($page, $this->recordPerPage), $data->count(), $this->recordPerPage, $page, $options);
     }
 

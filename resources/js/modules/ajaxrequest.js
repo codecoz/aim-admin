@@ -2,10 +2,6 @@ $('.btn-submit-action').on('click', function (e) {
     $("#myForm").submit();
 });
 
-window.loadModal = function (url) {
-    $("#body-content").load(url);
-}
-
 window.fadeOutAndClear = function (elementId, timeout = 2000) {
     setTimeout(() => {
         $(`#${elementId}`).fadeOut('slow', function () {
@@ -16,13 +12,7 @@ window.fadeOutAndClear = function (elementId, timeout = 2000) {
 };
 
 window.ajaxRequest = function (url, data = {}, successCallback, errorCallback, completeCallback, method = 'POST') {
-    swal.fire({
-        html: 'Please wait ... ',
-        allowOutsideClick: false,
-        didOpen: () => {
-            swal.showLoading()
-        },
-    });
+    $('.ajax-submit-button').buttonLoader('start');
     let settings = {
         url: url,
         type: method,
@@ -38,16 +28,17 @@ window.ajaxRequest = function (url, data = {}, successCallback, errorCallback, c
             if (response.data && response.alert) {
                 $("#alert").html(response.alert);
                 if (response.fade_out) {
-                    window.fadeOutAndClear('alert', 3000);
+                    window.fadeOutAndClear('alert', response.fade_out_delay);
                 }
             }
 
             if (response.data && response.redirect) {
-                // Redirect after a delay (2 or 3 seconds)
+                // Redirect after a delay (customize the delay as needed)
+                let delay = response.redirect_delay ?? 1500; // Default to 2000ms if not provided
                 setTimeout(function () {
                     // Use window.location.href for redirection
                     window.location.href = response.redirect;
-                }, 1000); // Delay in milliseconds (2000ms = 2s, change to 3000 for 3s)
+                }, delay);
             }
         },
         error: function (error) {
@@ -61,7 +52,7 @@ window.ajaxRequest = function (url, data = {}, successCallback, errorCallback, c
                 console.error('An error occurred:', error);
             }
             if (response.fade_out) {
-                window.fadeOutAndClear('alert', 2000);
+                window.fadeOutAndClear('alert', response.fade_out_delay);
             }
             // Call the errorCallback after handling the error
             if (errorCallback && typeof errorCallback === 'function') {
@@ -69,11 +60,12 @@ window.ajaxRequest = function (url, data = {}, successCallback, errorCallback, c
             }
         },
         complete: function (data) {
-            console.log('Data', data);
-            if (data.data && data.data.scroll_to_top) {
+            $('.ajax-submit-button').buttonLoader('stop');
+            let response;
+            response = data.responseJSON;
+            if (response && response.scroll_to_top) {
                 $('html, body').scrollTop(0);
             }
-            swal.close();
             if (completeCallback && typeof completeCallback === 'function') {
                 completeCallback();
             }

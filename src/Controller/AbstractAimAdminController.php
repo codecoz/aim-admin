@@ -11,6 +11,7 @@ use CodeCoz\AimAdmin\Form\CrudForm;
 
 abstract class AbstractAimAdminController extends Controller implements AimAdminControllerInterface
 {
+
     private ?array $actionList = null;
 
     public function configureFormField(): iterable
@@ -81,21 +82,21 @@ abstract class AbstractAimAdminController extends Controller implements AimAdmin
         ];
     }
 
-    protected function initEdit(int|string $id): CrudForm
+    protected function initEdit(mixed $row): CrudForm
     {
         $repo = $this->getRepository();
-        $row = $repo->getRecordForEdit($id);
+        $model = ($row instanceof Model) ? $row : $repo->getRecordForEdit($row);
         $this->configureForm();
         return CrudBoardFacade::getForm()
             ->setFormStat(CrudForm::STAT_EDIT)
-            ->setData($row);
+            ->setData($model);
     }
 
-    protected function initShow(int|string $id, array $fields)
+    protected function initShow(mixed $row, array $fields)
     {
         $this->actionList = $this->actionList ?? $this->configureActions();
         return CrudBoardFacade::setRepository($this->getRepository())
-            ->createShow($id, $fields)
+            ->createShow($row, $fields)
             ->addActions($this->actionList);
     }
 

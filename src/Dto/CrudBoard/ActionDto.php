@@ -109,6 +109,5 @@ final class ActionDto extends AbstractHtmlElementDto
         return $this->getHtmlElement() == 'button';
     }
 
-
 }
 

@@ -13,23 +13,37 @@
 
     <!-- Scripts -->
     @vite('resources/js/app.js')
-
+    <style>
+        .invalid-feedback {
+            display: block !important;
+        }
+    </style>
 </head>
 
 <body>
 <main>
     {{ $slot }}
-
-    @if (session('success'))
-        <x-aim-admin::toast type="success" message="{{ session('success') }}"/>
-    @elseif(session('info'))
-        <x-aim-admin::toast type="info" message="{{ session('info') }}"/>
-    @elseif(session('warning'))
-        <x-aim-admin::toast type="warning" message="{{ session('warning') }}"/>
-    @elseif(session('error'))
-        <x-aim-admin::toast type="error" message="{{ session('error') }}"/>
-    @endif
 </main>
+<!-- ./wrapper -->
+@php $toastTime = config('aim-admin.flash-timer', 2000); @endphp
+@if (session('success'))
+    <x-aim-admin::toast type="success" message="{{ session('success') }}" timer="{{session('flash-timer')??$toastTime}}"/>
+@elseif((session('info')))
+    <x-aim-admin::toast type="info" message="{{ session('info') }}" timer="{{session('flash-timer')??$toastTime}}"/>
+@elseif((session('warning')))
+    <x-aim-admin::toast type="warning" message="{{ session('warning') }}" timer="{{session('flash-timer')??$toastTime}}"/>
+@elseif((session('error')))
+    @if(config('aim-admin.show_toast_error', true))
+        <x-aim-admin::toast type="error" message="{{ session('error') }}" timer="{{session('flash-timer')??$toastTime}}"/>
+    @endif
+@endif
+@if(config('aim-admin.show_toast_error', true))
+    @if($errors->any())
+        @foreach ($errors->all() as $error)
+            <x-aim-admin::toast type="error" message="{{ $error }}" timer="{{session('flash-timer')??$toastTime}}"/>
+        @endforeach
+    @endif
+@endif
 @stack('scripts')
 </body>
 

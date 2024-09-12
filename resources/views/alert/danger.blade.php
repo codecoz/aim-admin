@@ -1,5 +1,6 @@
 @foreach ($errors as $error)
     <div class="alert alert-important alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <div class="d-flex">
             <div>
                 <!-- Download SVG icon from http://tabler-icons.io/i/alert-circle -->

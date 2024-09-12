@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of the Aim Admin package.
+ * This file is part of the AimAdmin package.
  *
  * (c) CodeCoz <contact@codecoz.com>
  *
@@ -17,11 +17,10 @@ use function Symfony\Component\String\u;
 /**
  * This is a trait for field  .
  *
- * @author CodeCoz <contact@codecoz.com>
+ * @author Muhammad Abdullah Ibne Masud <abdullah.masud@banglalink.net>
  */
 trait FieldTrait
 {
-
     private FieldDto $dto;
 
     private function __construct()

@@ -6,6 +6,6 @@
     </div>
     <!-- Default to the left -->
     <strong>Copyright &copy; 2014-{{Carbon::now()->format('Y')}} <a
-            href="https://codecoz.com/en">{{env('APP_NAME')}}</a>.</strong> All rights
+            href="https://banglalink.net/en">{{env('APP_NAME')}}</a>.</strong> All rights
     reserved.
 </footer>

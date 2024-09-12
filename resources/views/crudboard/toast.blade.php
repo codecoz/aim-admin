@@ -8,7 +8,7 @@
             toast.onmouseenter = swal.stopTimer;
             toast.onmouseleave = swal.resumeTimer;
         },
-        timer: {{$timer}},
+        timer: {{$timer??2000}},
         timerProgressBar: true,
         icon: '{{ $type }}',
         title: '{{ $message }}'

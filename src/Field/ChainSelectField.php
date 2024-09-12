@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of the Aim Admin package.
+ * This file is part of the AimAdmin package.
  *
  * (c) CodeCoz <contact@codecoz.com>
  *
@@ -16,7 +16,7 @@ use CodeCoz\AimAdmin\Collection\FieldCollection;
 /**
  * This class is for creating chai select field .
  *
- * @author CodeCoz <contact@codecoz.com>
+ * @author Muhammad Abdullah Ibne Masud <abdullah.masud@banglalink.net>
  */
 final class ChainSelectField
 {
@@ -35,6 +35,7 @@ final class ChainSelectField
         $children = FieldCollection::init($fields);
         return (new self())
             ->setName($name ?? 'chain')
+            ->setCssClass('row')
             ->setComponent('aim-admin::crudboard.fields.chainselect')
             ->setCustomOption('dependant-route', $route)
             ->setCustomOption('children', $children);

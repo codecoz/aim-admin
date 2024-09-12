@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of the Aim Admin package.
+ * This file is part of the AimAdmin package.
  *
  * (c) CodeCoz <contact@codecoz.com>
  *
@@ -14,10 +14,11 @@ namespace CodeCoz\AimAdmin\Field;
 use function Symfony\Component\String\u;
 use CodeCoz\AimAdmin\Dto\CrudBoard\ActionDto;
 
+
 /**
  * This class is for field creation in crudboard  .
  *
- * @author CodeCoz <contact@codecoz.com>
+ * @author Muhammad Abdullah Ibne Masud <md.a.ibne.masud@gmail.com>
  */
 final class ButtonField
 {
@@ -42,11 +43,11 @@ final class ButtonField
 
     /**
      * @param string $name
-     * @param mixed $label Use FALSE to hide the label; use NULL to autogenerate it
-     * @param mixed ...$prarms
-     * @return ButtonField
+     * @param string|null $label
+     * @param mixed ...$params
+     * @return self
      */
-    public static function init(string $name, ?string $label = null, mixed ...$prarms): self
+    public static function init(string $name, ?string $label = null, mixed ...$params): self
     {
         $dto = new ActionDto();
         $dto->setType($params['type'] ?? ActionDto::TYPE_ROW);
@@ -70,7 +71,7 @@ final class ButtonField
                 $dto->setCssClass('btn btn-block btn-sm btn-info');
                 break;
             default:
-                $dto->setCssClass('btn btn-block btn-primary btn-sm');
+                $dto->setCssClass('btn btn-block btn-sm btn-primary');
                 break;
         }
         isset($params['icon']) && $dto->setIcon($params['icon']);
@@ -83,7 +84,7 @@ final class ButtonField
     public function createAsCrudBoardAction(): self
     {
         $this->dto->setType(ActionDto::TYPE_CRUD_BOARD);
-        $this->dto->setCssClass('btn btn-primary');
+        $this->dto->setCssClass('btn btn-sm btn-primary');
         $this->iconForNew();
         $this->dto->setComponent('aim-admin::crudboard.actions.board-action');
         return $this;
@@ -104,7 +105,7 @@ final class ButtonField
     public function createAsFormAction(): self
     {
         $this->dto->setType(ActionDto::TYPE_FORM);
-        $this->dto->setCssClass('btn btn-secondary');
+        $this->dto->setCssClass('btn btn-sm btn-secondary');
         $label = $this->dto->getLabel() ?? $this->dto->getHtmlAttributes()->get('title');
         $this->dto->setLabel($label);
         $this->dto->setComponent("aim-admin::crudboard.actions.form-action");
@@ -114,7 +115,7 @@ final class ButtonField
     public function createAsFilterAction(): self
     {
         $this->dto->setType(ActionDto::TYPE_FILTER);
-        $this->dto->setCssClass('btn btn-secondary');
+        $this->dto->setCssClass('btn btn-sm btn-secondary');
         $this->setComponent("aim-admin::crudboard.actions.filter-action");
         return $this;
     }
@@ -122,18 +123,19 @@ final class ButtonField
     public function createAsFilterSubmitAction(): self
     {
         $this->dto->setType(ActionDto::TYPE_FILTER);
-        $this->dto->setCssClass('btn btn-success float-right');
+        $this->dto->setCssClass('btn btn-sm btn-success float-right');
         $this->dto->setHtmlElement('button');
         $this->setHtmlAttributes(['type' => 'submit'])
             ->setComponent("aim-admin::crudboard.actions.filter-action");
         return $this;
     }
 
+
     public function createAsFormSubmitAction(): self
     {
         $this->dto->setType(ActionDto::TYPE_FORM);
         $this->dto->setHtmlElement('button');
-        $this->dto->setCssClass('btn float-right btn-primary');
+        $this->dto->setCssClass('btn btn-sm float-right btn-primary');
         $label = $this->dto->getLabel() ?? $this->dto->getHtmlAttributes()->get('title');
         $this->dto->setLabel($label);
         $this->setHtmlAttributes(['type' => 'submit'])
@@ -144,7 +146,7 @@ final class ButtonField
     public function createAsShowAction(): self
     {
         $this->dto->setType(ActionDto::TYPE_SHOW);
-        $this->dto->setCssClass('btn btn-secondary');
+        $this->dto->setCssClass('btn btn-sm btn-secondary');
         $this->dto->setComponent('aim-admin::crudboard.actions.show-button');
         return $this;
     }
@@ -246,13 +248,19 @@ final class ButtonField
     public function linkToUrl(string|callable $url): self
     {
 
+        if (is_callable($url)) {
+            $url = $url();
+        }
+
         $this->dto->setUrl($url);
+
         return $this;
     }
 
     public function displayIf(callable $callable): self
     {
         $this->dto->setDisplayCallable($callable);
+
         return $this;
     }
 
@@ -282,6 +290,7 @@ final class ButtonField
         return $this;
     }
 
+
     private static function humanizeString(string $string): string
     {
         $uString = u($string);
@@ -304,8 +313,8 @@ final class ButtonField
 
     public function asModal(): self
     {
-        $this->dto->setHtmlAttributes(['data-target' => '#cc-modal', 'data-toggle' => 'modal']);
-        $this->dto->setCssClass(trim($this->dto->getCssClass() . ' cc-modal'));
+        $this->dto->setHtmlAttributes(['data-target' => '#AimAdmin-modal', 'data-toggle' => 'modal']);
+        $this->dto->setCssClass(trim($this->dto->getCssClass() . ' AimAdmin-modal'));
         return $this;
     }
 }

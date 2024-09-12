@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of the Aim Admin package.
+ * This file is part of the AimAdmin package.
  *
  * (c) CodeCoz <contact@codecoz.com>
  *
@@ -11,13 +11,14 @@
 
 namespace CodeCoz\AimAdmin\Field;
 
+
 use CodeCoz\AimAdmin\Contracts\Field\FieldInterface;
 
 
 /**
  * This class is for field creation in crudboard  .
  *
- * @author CodeCoz <contact@codecoz.com>
+ * @author Muhammad Abdullah Ibne Masud <md.a.ibne.masud@gmail.com>
  */
 final class DateTimeField implements FieldInterface
 {
@@ -31,6 +32,5 @@ final class DateTimeField implements FieldInterface
             ->setComponent('aim-admin::crudboard.fields.datetime')
             ->formatValue(fn($value): string => (new \DateTime($value))->format('Y-m-d'));
     }
-
 
 }

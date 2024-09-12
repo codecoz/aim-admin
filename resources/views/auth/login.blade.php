@@ -3,7 +3,6 @@
         <x-slot name="logo">
             <img src="{{ asset('logo.png') }}" alt="Logo" style="width: 150px; height: auto;">
         </x-slot>
-        <x-aim-admin::utils.error :messages="$errors" class="mt-2"/>
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <div class="input-group mb-3">

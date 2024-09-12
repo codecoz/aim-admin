@@ -35,14 +35,6 @@ interface CrudBoardInterface
 
     public function createForm(array $fields);
 
-    public function createShow(string|int $id, array $fields): CrudShowInterface;
-
     public function getCrudShow(): CrudShowInterface;
-
-    public function setParam($param);
-
-    public function getParams(): array;
-
-
 
 }

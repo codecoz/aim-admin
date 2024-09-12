@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of the Aim Admin package.
+ * This file is part of the AimAdmin package.
  *
  * (c) CodeCoz <contact@codecoz.com>
  *
@@ -18,7 +18,7 @@ use CodeCoz\AimAdmin\Contracts\Field\FieldInterface;
 /**
  * This class is for creating text field .
  *
- * @author CodeCoz <contact@codecoz.com>
+ * @author Muhammad Abdullah Ibne Masud <abdullah.masud@banglalink.net>
  */
 final class ChoiceField implements FieldInterface
 {
@@ -35,8 +35,8 @@ final class ChoiceField implements FieldInterface
         $choiceList = $params[1] ?? ($params[self::LIST] ?? null);
         $empty = $params[2] ?? ($params[self::EMPTY] ?? null);
         $selected = $params[3] ?? ($params[self::SELECTED] ?? null);
-        !$choiceList && throw new \InvalidArgumentException(self::LIST . ':[] is a mandatory  parameter');
-        return (new self($type, $choiceList))
+        (null === $choiceList) && throw new \InvalidArgumentException(self::LIST . ':[] is a mandatory  parameter');
+        return (new self())
             ->setName($name)
             ->setComponent('aim-admin::crudboard.fields.choice')
             ->setLabel($label ?? self::humanizeString($name))
@@ -44,7 +44,6 @@ final class ChoiceField implements FieldInterface
             ->setCustomOption(self::EMPTY, $empty)
             ->setDefault($selected)
             ->setInputType($type);
-
     }
 
     public function setDefault(mixed $defaultValue): self
@@ -57,6 +56,12 @@ final class ChoiceField implements FieldInterface
             $values[$defaultValue] = 1;
         }
         $this->setCustomOption(self::SELECTED, $values);
+        return $this;
+    }
+
+    public function setList(array $list): self
+    {
+        $this->setCustomOption(self::LIST, $list);
         return $this;
     }
 

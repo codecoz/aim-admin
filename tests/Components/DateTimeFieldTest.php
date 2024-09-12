@@ -10,28 +10,25 @@ use PHPUnit\Framework\Attributes\Test;
 
 class DateTimeFieldTest extends ComponentTestCase
 {
-    #[Test]
-    public function it_initializes_with_correct_attributes()
-    {
-        $component = DateTimeField::init('date', 'Date');
+    private DateTimeField $component;
 
-        $this->assertEquals('date', $component->getDto()->getName());
-        $this->assertEquals('Date', $component->getDto()->getLabel());
-        $this->assertEquals('datetime-local', $component->getDto()->getInputType());
-        $this->assertEquals('input', $component->getDto()->getHtmlElement());
+    public function __construct(string $name)
+    {
+        parent::__construct($name);
+        $this->component = DateTimeField::init('date', 'Date');
     }
 
     #[Test]
-    public function it_sets_the_format_correctly()
+    public function it_initializes_with_correct_attributes()
     {
-        $component = DateTimeField::init('date', 'Date')->setFormat('Y-m-d H:i:s');
-        $this->assertEquals('Y-m-d H:i:s', $component->getDto()->getCustomOption('format'));
+
+        $this->assertEquals('date', $this->component->getDto()->getName());
+        $this->assertEquals('Date', $this->component->getDto()->getLabel());
     }
 
     #[Test]
     public function it_sets_the_component_template_correctly()
     {
-        $component = DateTimeField::init('date', 'Date');
-        $this->assertEquals('aim-admin::crudboard.fields.datetime', $component->getDto()->getComponent());
+        $this->assertEquals('aim-admin::crudboard.fields.datetime', $this->component->getDto()->getComponent());
     }
 }

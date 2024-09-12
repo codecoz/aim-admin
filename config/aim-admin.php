@@ -98,4 +98,9 @@ return [
         'footer' => '',
     ],
     'footer_text' => 'Anything you want',
+    //Toast Time
+    'flash-timer' => 2000,
+    'show_toast_error' => true,
+    'show_inline_alert_box' => true,
+    'inline_validation_error' => true
 ];

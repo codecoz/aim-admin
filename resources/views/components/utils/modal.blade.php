@@ -1,4 +1,4 @@
-<div id="cc-modal" class="modal fade" tabindex="-1" role="dialog">
+<div id="AimAdmin-modal" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">

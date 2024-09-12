@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of the Aim Admin package.
+ * This file is part of the AimAdmin package.
  *
  * (c) CodeCoz <contact@codecoz.com>
  *
@@ -14,13 +14,14 @@ namespace CodeCoz\AimAdmin\Form;
 use ArrayAccess;
 use CodeCoz\AimAdmin\Collection\ActionCollection;
 use CodeCoz\AimAdmin\Collection\FormFieldCollection;
+use CodeCoz\AimAdmin\Contracts\Field\FieldInterface;
 use CodeCoz\AimAdmin\Contracts\Service\CrudBoard\CrudFormHandlerInterface;
 use CodeCoz\AimAdmin\Field\IdField;
 
 /**
  * This is an abstract form  class for crud board
  *
- * @author CodeCoz <contact@codecoz.com>
+ * @author Muhammad Abdullah Ibne Masud <abdullah.masud@banglalink.net>
  */
 abstract class AbstractForm
 {
@@ -34,8 +35,9 @@ abstract class AbstractForm
     private array $attributes = [];
     private string $cssClass = '';
     private string $method = 'post';
-    private bool $isSubmit = false;
     private FormFieldCollection $fields;
+    private array $rawFields;
+
     private CrudFormHandlerInterface $handler;
     protected ActionCollection $actions;
     private $data;
@@ -44,6 +46,7 @@ abstract class AbstractForm
     public function addFields(array $fields)
     {
         $this->fields = FormFieldCollection::init($fields);
+        $this->rawFields = $fields;
         return $this;
     }
 
@@ -153,6 +156,34 @@ abstract class AbstractForm
         }
         return $this;
     }
+
+    public function setFields(array $fieldUpdates): static
+    {
+        $updatedFields = array_reduce($this->rawFields, function ($carry, $field) {
+            $carry[$field->getDto()->getName()] = $field;
+            return $carry;
+        }, []);
+
+        foreach ($fieldUpdates as $name => $updateAction) {
+            if (isset($updatedFields[$name])) {
+                if (is_callable($updateAction)) {
+                    $updatedFields[$name] = $updateAction($updatedFields[$name]);
+                } elseif ($updateAction instanceof FieldInterface) {
+                    // This allows replacing the field with a new type
+                    $updatedFields[$name] = $updateAction;
+                }
+            } elseif ($updateAction instanceof FieldInterface) {
+                $updatedFields[$name] = $updateAction;
+            } else {
+                throw new \InvalidArgumentException("Invalid update action for field '$name'");
+            }
+        }
+
+        $this->addFields(array_values($updatedFields));
+
+        return $this;
+    }
+
 
     public function addIdField(string $name = 'id'): static
     {

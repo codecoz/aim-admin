@@ -1,4 +1,3 @@
-
 <div class="alert alert-important alert-info alert-dismissible" role="alert">
     <div class="d-flex">
         <div>

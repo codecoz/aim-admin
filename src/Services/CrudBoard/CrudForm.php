@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 /*
- * This file is part of the Aim Admin package.
+ * This file is part of the AimAdmin package.
  *
  * (c) CodeCoz <contact@codecoz.com>
  *
@@ -18,7 +18,7 @@ use CodeCoz\AimAdmin\Form\AbstractForm;
 /**
  * This is an CRUD form class in crud board. Main purpose of this form is to build form to create DB object
  *
- * @author CodeCoz <contact@codecoz.com>
+ * @author Muhammad Abdullah Ibne Masud <abdullah.masud@banglalink.net>
  */
 class CrudForm extends AbstractForm
 {

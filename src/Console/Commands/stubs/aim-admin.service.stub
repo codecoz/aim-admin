@@ -1,0 +1,15 @@
+<?php declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use {{ serviceContractsNamespace }}\{{ class }}Interface;
+use {{ repoConstructNamespace }}\{{ tableModel }}RepositoryInterface;
+
+final class {{ class }} implements {{ class }}Interface
+
+{
+    public function __construct(private readonly {{ tableModel }}RepositoryInterface ${{ camelName }}Repository)
+    {
+
+    }
+}

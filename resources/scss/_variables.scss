@@ -1,0 +1,40 @@
+@use "sass:math";
+
+// Body
+$body-bg: #f8fafc;
+
+// Typography
+$font-family-sans-serif: "Nunito", sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+// Colors
+$blue: #3490dc;
+$indigo: #6574cd;
+$purple: #9561e2;
+$pink: #f66D9b;
+$orange: #f6993f;
+$teal: #4dc0b5;
+$cyan: #6cb2eb;
+
+//Function for BL Brand Guideline
+
+@function cmyk($c, $m, $y, $k) {
+    $c: math.div($c, 100);
+    $m: math.div($m, 100);
+    $y: math.div($y, 100);
+    $k: math.div($k, 100);
+    $r: 255 * (1 - $c) * (1 - $k);
+    $g: 255 * (1 - $m) * (1 - $k);
+    $b: 255 * (1 - $y) * (1 - $k);
+    @return rgb($r, $g, $b);
+}
+
+$bl-color: cmyk(000, 075, 100, 000);
+$bl-light: cmyk(000, 060, 100, 000);
+$black: cmyk(000, 000, 000, 100);
+$green: cmyk(050, 000, 100, 000);
+$yellow: cmyk(000, 014, 100, 000);
+$red: cmyk(000, 100, 000, 000);
+
+

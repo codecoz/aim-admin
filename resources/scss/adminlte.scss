@@ -1,0 +1,12 @@
+@import 'admin-lte/dist/css/adminlte.css';
+@import 'admin-lte/plugins/icheck-bootstrap/icheck-bootstrap.css';
+@import 'variables';
+//@import './bl';
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+.navbar-laravel {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+

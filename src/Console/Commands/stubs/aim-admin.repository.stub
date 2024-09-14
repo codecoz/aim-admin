@@ -1,0 +1,33 @@
+<?php declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use Illuminate\Database\Eloquent\Builder;
+
+use App\Models\{{ tableModel }};
+use {{ repoContractsNamespace }}\{{ class }}Interface;
+use CodeCoz\AimAdmin\Contracts\Service\CrudBoard\CrudGridLoaderInterface;
+use CodeCoz\AimAdmin\Repository\AbstractAimAdminRepository;
+
+class {{ class }}  extends AbstractAimAdminRepository implements {{ class }}Interface, CrudGridLoaderInterface
+{
+
+   public function getModelFqcn(): string
+   {
+     return {{ tableModel }}::class;
+   }
+
+   public function getGridQuery(): ?Builder
+   {
+       return {{ tableModel }}::query()->orderBy('created_at', 'desc');
+   }
+
+   public function applyFilterQuery(Builder $query, array $filters): Builder
+   {
+       // $filters_name = isset($filters['name']) ? $filters['name'] : "";
+       // $query->where(DB::raw('lower(name)'), 'like', '%'.strtolower($filters_name).'%');
+
+       return parent::applyFilterQuery($query, $filters);
+   }
+
+}

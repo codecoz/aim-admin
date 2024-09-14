@@ -1,0 +1,1 @@
+<input type="{{$field->getHtmlAttributes()->get('type')}}"  name="{{ $field->getName() }}" value="{{ old($field->getName(),$field->getValue()) }}" />

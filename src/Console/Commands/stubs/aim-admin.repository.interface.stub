@@ -1,0 +1,9 @@
+<?php declare(strict_types=1);
+
+namespace {{ namespace }};
+
+interface {{ class }}
+{
+    // function getAll();
+    // function findById(int $id);
+}

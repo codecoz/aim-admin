@@ -37,7 +37,7 @@ Aim Admin is a powerful Laravel package designed to simplify admin dashboard dev
 **Installation:**
 
 ```bash
-composer require codecoz/aim-admin
+composer require codecoz/aim-admin @dev
 ```
 
 **Documentation:**

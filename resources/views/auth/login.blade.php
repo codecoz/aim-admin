@@ -1,7 +1,7 @@
 <x-aim-admin::layout.login>
     <x-aim-admin::layout.auth-card>
         <x-slot name="logo">
-            <img src="{{ asset('logo.png') }}" alt="Logo" style="width: 150px; height: auto;">
+            <img src="{{ asset('img/logo.png') }}" alt="Logo" style="width: 150px; height: auto;">
         </x-slot>
         <form method="POST" action="{{ route('login') }}">
             @csrf

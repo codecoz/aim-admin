@@ -13,6 +13,7 @@
                         <span class="fas fa-envelope"></span>
                     </div>
                 </div>
+                <x-aim-admin::utils.input-error :messages="$errors->get('email')" class="mt-2"/>
             </div>
             <div class="input-group mb-3">
                 <input type="password" class="form-control" name="password" placeholder="Password">
@@ -21,6 +22,7 @@
                         <span class="fas fa-lock"></span>
                     </div>
                 </div>
+                <x-aim-admin::utils.input-error :messages="$errors->get('password')" class="mt-2"/>
             </div>
             <div class="row">
                 <div class="col-8">

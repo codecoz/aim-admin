@@ -4,6 +4,7 @@ namespace CodeCoz\AimAdmin\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputArgument;
 
 class AimAdminCommand extends Command
@@ -44,7 +45,7 @@ class AimAdminCommand extends Command
             $allowMultipleSelections = true
         );
 
-        $name = $this->ask("What is the name ?", 'Product');
+        $name = Str::studly($this->ask("What is the name ?", 'Product'));
 
         foreach ($types as $type) {
             switch ($type) {

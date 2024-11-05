@@ -171,6 +171,10 @@ class AdminServiceProvider extends ServiceProvider
     private function loadConfig(): void
     {
         $this->mergeConfigFrom($this->configPath, $this->packagePrefix);
+
+        $this->publishes([
+            __DIR__ . '/../config/aim-admin.php' => config_path('aim-admin.php'),
+        ], 'aim-admin-config');
     }
 
     /**

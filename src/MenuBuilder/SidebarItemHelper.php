@@ -1,11 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace CodeCoz\AimAdmin\MenuBuilder;
 
 class SidebarItemHelper extends MenuItemHelper
 {
-
-
     /**
      * Check if a menu item is accepted for the sidebar section.
      *

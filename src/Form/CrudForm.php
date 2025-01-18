@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /*
  * This file is part of the AimAdmin package.
@@ -13,7 +15,6 @@ namespace CodeCoz\AimAdmin\Form;
 
 use Illuminate\Http\Request;
 use CodeCoz\AimAdmin\Collection\ActionCollection;
-
 
 /**
  * This is an CRUD form class in crud board. Main purpose of this form is to build form to create DB object
@@ -38,7 +39,7 @@ class CrudForm extends AbstractForm
         return $this->save();
     }
 
-    private function validate()
+    private function validate(): void
     {
         $rules = $this->prepareValidationRule();
         $this->request->validate($rules);

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Aim Admin package.
@@ -15,10 +17,11 @@ namespace CodeCoz\AimAdmin\Contracts\Controller;
  * This interface defines blueprints of AimAdmin admin controller.
  * as well as filter and sorting options.
  *
- * @author CodeCoz <contact@codecoz.com>
+ * @author Muhammad Abdullah Ibne Masud <md.a.ibne.masud@gmail.com>
  */
 interface AimAdminControllerInterface
 {
-    function getRepository();
-    function initGrid(array $columns);
+    //public function getRepository();
+    public function initGrid(array $columns);
+
 }

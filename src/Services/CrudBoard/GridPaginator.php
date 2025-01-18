@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /*
  * This file is part of the AimAdmin package.
@@ -23,7 +25,6 @@ use Illuminate\Support\Collection;
  */
 class GridPaginator
 {
-
     public function __construct(private readonly int $recordPerPage = 3)
     {
     }

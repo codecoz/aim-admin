@@ -1,7 +1,8 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace CodeCoz\AimAdmin\MenuBuilder\Filters;
-
 
 use CodeCoz\AimAdmin\MenuBuilder\MenuItemHelper;
 use CodeCoz\AimAdmin\MenuBuilder\SidebarItemHelper;

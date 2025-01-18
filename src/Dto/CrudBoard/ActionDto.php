@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Aim Admin package.
@@ -10,7 +12,6 @@
  */
 
 namespace CodeCoz\AimAdmin\Dto\CrudBoard;
-
 
 /**
  * This class is for action DTO of grid board .
@@ -110,4 +111,3 @@ final class ActionDto extends AbstractHtmlElementDto
     }
 
 }
-

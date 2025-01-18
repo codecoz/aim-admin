@@ -53,7 +53,7 @@ class AdminServiceProvider extends ServiceProvider
         $this->interfacesBindings();
 
         // Register user service provider.
-//        $this->app->register(UserServiceProvider::class);
+        //        $this->app->register(UserServiceProvider::class);
 
         // Register the Menu service provider.
         $this->app->register(MenuServiceProvider::class);
@@ -72,15 +72,15 @@ class AdminServiceProvider extends ServiceProvider
     {
         $bladeMethodWrapper = '\\CodeCoz\\AimAdmin\\AdminServiceProvider::bladeMethodWrapper';
 
-        $bladeCompiler->directive('hasanypermission', fn($args) => "<?php if({$bladeMethodWrapper}('hasAnyPermission', {$args})): ?>");
-        $bladeCompiler->directive('elsehasanypermission', fn($args) => "<?php elseif({$bladeMethodWrapper}('hasAnyPermission', {$args})): ?>");
-        $bladeCompiler->directive('endhasanypermission', fn() => '<?php endif; ?>');
+        $bladeCompiler->directive('hasanypermission', fn ($args) => "<?php if({$bladeMethodWrapper}('hasAnyPermission', {$args})): ?>");
+        $bladeCompiler->directive('elsehasanypermission', fn ($args) => "<?php elseif({$bladeMethodWrapper}('hasAnyPermission', {$args})): ?>");
+        $bladeCompiler->directive('endhasanypermission', fn () => '<?php endif; ?>');
 
-        $bladeCompiler->directive('hasrole', fn($args) => "<?php if({$bladeMethodWrapper}('hasRole', {$args})): ?>");
-        $bladeCompiler->directive('endhasrole', fn() => '<?php endif; ?>');
+        $bladeCompiler->directive('hasrole', fn ($args) => "<?php if({$bladeMethodWrapper}('hasRole', {$args})): ?>");
+        $bladeCompiler->directive('endhasrole', fn () => '<?php endif; ?>');
 
-        $bladeCompiler->directive('hasanyrole', fn($args) => "<?php if({$bladeMethodWrapper}('hasAnyRole', {$args})): ?>");
-        $bladeCompiler->directive('endhasanyrole', fn() => '<?php endif; ?>');
+        $bladeCompiler->directive('hasanyrole', fn ($args) => "<?php if({$bladeMethodWrapper}('hasAnyRole', {$args})): ?>");
+        $bladeCompiler->directive('endhasanyrole', fn () => '<?php endif; ?>');
 
     }
 
@@ -98,7 +98,7 @@ class AdminServiceProvider extends ServiceProvider
     {
         // Register the service the package provides.
         $this->app->singleton($this->packagePrefix, function ($app) {
-            return new Admin;
+            return new Admin();
         });
 
         // Register the extra Interfaces to the package provides.
@@ -171,10 +171,6 @@ class AdminServiceProvider extends ServiceProvider
     private function loadConfig(): void
     {
         $this->mergeConfigFrom($this->configPath, $this->packagePrefix);
-
-        $this->publishes([
-            __DIR__ . '/../config/aim-admin.php' => config_path('aim-admin.php'),
-        ], 'aim-admin-config');
     }
 
     /**
@@ -203,9 +199,9 @@ class AdminServiceProvider extends ServiceProvider
      */
     private function registerGlobalMiddleware(): void
     {
-//        $this->app['router']->aliasMiddleware('role', RoleMiddleware::class);
-//        $this->app['router']->aliasMiddleware('acl', CheckPermission::class);
-//        $this->app['router']->pushMiddlewareToGroup('web', ForcePasswordChange::class);
+        //        $this->app['router']->aliasMiddleware('role', RoleMiddleware::class);
+        //        $this->app['router']->aliasMiddleware('acl', CheckPermission::class);
+        //        $this->app['router']->pushMiddlewareToGroup('web', ForcePasswordChange::class);
     }
 
     /**

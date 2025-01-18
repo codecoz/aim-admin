@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace CodeCoz\AimAdmin\Controller;
 
@@ -8,27 +10,46 @@ use Illuminate\Http\Request;
 use CodeCoz\AimAdmin\Support\Facades\CrudBoardFacade;
 use CodeCoz\AimAdmin\Contracts\Service\CrudBoard\CrudGridInterface;
 use CodeCoz\AimAdmin\Form\CrudForm;
+use CodeCoz\AimAdmin\Repository\AbstractAimAdminRepository;
 
 abstract class AbstractAimAdminController extends Controller implements AimAdminControllerInterface
 {
-
     private ?array $actionList = null;
 
-    public function configureFormField(): iterable
+    /**
+    * Abstract method must be implemented in the child controller
+    * this will return associated respository for the controller.
+    *
+    * @return AbstractAimAdminRepository
+    */
+    abstract protected function getRepository();
+
+    /**
+    * protected method for configuring  crudboard actions.
+    * need be implemented in the child controller class for different actions.
+    *
+    * @return iterable
+    */
+    protected function configureActions(): iterable
     {
-        return [];
+        return $this->getDefaultCrudActions();
     }
 
-    public function configureGridColumn(): iterable
-    {
-        return [];
-    }
+    /**
+    * Abstracted method for configuring  crudboard actions.
+    * Must be implemented in the child controller class for the actions.
+    *
+    * @return void
+    */
+    abstract protected function configureFilter(): void;
 
-
-    public function configureGridRowActions(): iterable
-    {
-        return [];
-    }
+    /**
+    * Abstract method for configuring  crudboard form.
+    * Must to be implemented in the child controller class for configuring the form.
+    *
+    * @return void
+    */
+    abstract protected function configureForm(): void;
 
 
     public function initGrid(array $columns, mixed ...$params): CrudGridInterface
@@ -85,7 +106,7 @@ abstract class AbstractAimAdminController extends Controller implements AimAdmin
     protected function initEdit(mixed $row): CrudForm
     {
         $repo = $this->getRepository();
-        $model = ($row instanceof Model) ? $row : $repo->getRecordForEdit($row);
+        $model = is_object($row) ? $row : $repo->getRecordForEdit($row);
         $this->configureForm();
         return CrudBoardFacade::getForm()
             ->setFormStat(CrudForm::STAT_EDIT)
@@ -99,11 +120,4 @@ abstract class AbstractAimAdminController extends Controller implements AimAdmin
             ->createShow($row, $fields)
             ->addActions($this->actionList);
     }
-
-    public function configureActions(): iterable
-    {
-        return $this->getDefaultCrudActions();
-    }
-
 }
-

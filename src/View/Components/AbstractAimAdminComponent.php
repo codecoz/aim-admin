@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Aim Admin package.
@@ -12,17 +14,15 @@
 namespace CodeCoz\AimAdmin\View\Components;
 
 use Illuminate\View\Component;
-use  CodeCoz\AimAdmin\Contracts\Service\CrudBoard\CrudBoardInterface;
-
+use CodeCoz\AimAdmin\Contracts\Service\CrudBoard\CrudBoardInterface;
 
 /**
  * this is a base component class of AimAdmin platform.
  *
  * @author CodeCoz <contact@codecoz.com>
  */
-abstract class  AbstractAimAdminComponent extends Component
+abstract class AbstractAimAdminComponent extends Component
 {
-
     public function __construct(private CrudBoardInterface $crudBoard)
     {
     }

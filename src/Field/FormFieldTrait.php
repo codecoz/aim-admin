@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Aim Admin package.
@@ -11,8 +13,8 @@
 
 namespace CodeCoz\AimAdmin\Field;
 
-
 use CodeCoz\AimAdmin\Dto\CrudBoard\FormFieldDto;
+
 use function Symfony\Component\String\u;
 
 /**
@@ -22,7 +24,6 @@ use function Symfony\Component\String\u;
  */
 trait FormFieldTrait
 {
-
     private FormFieldDto $dto;
 
     private function __construct()

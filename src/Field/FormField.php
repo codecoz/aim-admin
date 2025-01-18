@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /*
  * This file is part of the AimAdmin package.
@@ -11,9 +13,7 @@
 
 namespace CodeCoz\AimAdmin\Field;
 
-
 use CodeCoz\AimAdmin\Contracts\Field\FieldInterface;
-
 
 /**
  * This class is for field creation in crudboard  .
@@ -25,7 +25,7 @@ final class FormField implements FieldInterface
 {
     use FieldTrait;
 
-    public static function init(string $name, ?string $label = null, ...$params) : self
+    public static function init(string $name, ?string $label = null, ...$params): self
     {
         return (new self())
         ->setName($name)

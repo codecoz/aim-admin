@@ -16,7 +16,7 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        tap(new Filesystem, function ($filesystem) {
+        tap(new Filesystem(), function ($filesystem) {
             if ($filesystem->isDirectory(app_path('Contracts/Services'))) {
                 $this->autoBindInterfaces(app_path('Contracts/Services'), app_path('Services'));
             }

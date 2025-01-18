@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Aim Admin package.
@@ -56,11 +58,21 @@ abstract class AbstractAimAdminRepository implements AimAdminRepositoryInterface
     public function saveFormData(array $data = [])
     {
         $class = $this->getModelFqcn();
-        $model = new $class;
-        foreach ($data as $key => $value) {
-            $model->$key = $value;
+        $model = new $class();
+        $key = $model->getKeyName();
+        //primary key exists, edit record
+        if (isset($data[$key])) {
+            $model = $class::where([$key => $data[$key]]);
+            unset($data[$key]);
+            $model->update($data);
+        } else {
+            //insert
+            unset($data[$key]);
+            foreach ($data as $field => $val) {
+                $model->$field = $val;
+            }
+            $model->save();
         }
-        $model->save();
         return $model;
     }
 

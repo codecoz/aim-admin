@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Aim Admin package.
@@ -20,7 +22,6 @@ use CodeCoz\AimAdmin\Services\CrudBoard\CrudShow as Show;
  */
 class CrudShow extends AbstractAimAdminComponent
 {
-
     public Show $show;
 
     /**

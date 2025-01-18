@@ -22,7 +22,8 @@ class MenuServiceProvider extends ServiceProvider
         if (is_null($this->app['config']['aim-admin'])) {
             // Merge the package's default configuration if it doesn't exist
             $this->mergeConfigFrom(
-                Admin::packagePath('config/aim-admin.php'), 'aim-admin'
+                Admin::packagePath('config/aim-admin.php'),
+                'aim-admin'
             );
         }
 

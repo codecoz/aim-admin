@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Aim Admin package.
@@ -22,15 +24,15 @@ use Illuminate\Pagination\LengthAwarePaginator;
  */
 interface CrudGridInterface
 {
-    function getGridDataLoader(): CrudGridLoaderInterface;
+    public function getGridDataLoader(): CrudGridLoaderInterface;
 
-    function getGridData(): LengthAwarePaginator;
+    public function getGridData(): LengthAwarePaginator;
 
-    function addColumns(array $columns);
+    public function addColumns(array $columns);
 
-    function getColumns();
+    public function getColumns();
 
-    function addActions(array $actions = []);
+    public function addActions(array $actions = []);
 
     public function getFilter(): GridFilter;
 

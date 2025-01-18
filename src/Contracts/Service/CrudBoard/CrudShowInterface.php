@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Aim Admin package.
@@ -22,9 +24,9 @@ use CodeCoz\AimAdmin\Collection\FieldCollection;
  */
 interface CrudShowInterface
 {
-    function getActions(): ActionCollection;
+    public function getActions(): ActionCollection;
 
-    function getFields(): FieldCollection;
+    public function getFields(): FieldCollection;
 
-    function getRecord(): \ArrayAccess;
+    public function getRecord(): \ArrayAccess;
 }

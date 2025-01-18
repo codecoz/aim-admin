@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Aim Admin package.
@@ -28,8 +30,7 @@ class Toast extends Component
         public string $type,
         public string $message,
         public int    $timer = 2000,
-    )
-    {
+    ) {
     }
 
     /**

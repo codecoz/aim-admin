@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /*
  * This file is part of the AimAdmin package.
@@ -11,9 +13,7 @@
 
 namespace CodeCoz\AimAdmin\Field;
 
-
 use CodeCoz\AimAdmin\Contracts\Field\FieldInterface;
-
 
 /**
  * This class is for creating text field .
@@ -22,12 +22,11 @@ use CodeCoz\AimAdmin\Contracts\Field\FieldInterface;
  */
 final class ChoiceField implements FieldInterface
 {
-    final const LIST = 'choiceList';
-    final const TYPE = 'choiceType';
-    final const EMPTY = 'empty';
-    final const SELECTED = 'selected';
-
     use FormFieldTrait;
+    final public const LIST = 'choiceList';
+    final public const TYPE = 'choiceType';
+    final public const EMPTY = 'empty';
+    final public const SELECTED = 'selected';
 
     public static function init(string $name, ?string $label = null, ...$params): self
     {

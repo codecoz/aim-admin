@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Aim Admin package.
@@ -20,5 +22,5 @@ namespace CodeCoz\AimAdmin\Contracts\Service\CrudBoard;
  */
 interface CrudFormHandlerInterface
 {
-    function saveFormData(array $data = []);
+    public function saveFormData(array $data = []);
 }

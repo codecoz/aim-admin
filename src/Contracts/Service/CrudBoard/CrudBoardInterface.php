@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /*
  * This file is part of the Aim Admin package.
  *
@@ -35,6 +37,12 @@ interface CrudBoardInterface
 
     public function createForm(array $fields);
 
+    public function createShow(mixed $row, array $fields): CrudShowInterface;
+
     public function getCrudShow(): CrudShowInterface;
+
+    public function setParam(mixed $param): static;
+
+    public function getParams(): array;
 
 }

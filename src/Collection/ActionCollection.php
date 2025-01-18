@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Aim Admin package.
@@ -13,7 +15,6 @@ namespace CodeCoz\AimAdmin\Collection;
 
 use CodeCoz\AimAdmin\Dto\CrudBoard\ActionDto;
 
-
 /**
  * This class is for action collection in crudboard  .
  *
@@ -21,7 +22,6 @@ use CodeCoz\AimAdmin\Dto\CrudBoard\ActionDto;
  */
 final class ActionCollection extends AbstractCollection
 {
-
     private function __construct(array $actions)
     {
         $this->items = $actions;
@@ -61,7 +61,7 @@ final class ActionCollection extends AbstractCollection
     {
         return self::init(array_filter(
             $this->items,
-            static fn(ActionDto $action): bool => $action->isRowAction()
+            static fn (ActionDto $action): bool => $action->isRowAction()
         ));
     }
 
@@ -69,7 +69,7 @@ final class ActionCollection extends AbstractCollection
     {
         return self::init(array_filter(
             $this->items,
-            static fn(ActionDto $action): bool => $action->isCrudBoardAction()
+            static fn (ActionDto $action): bool => $action->isCrudBoardAction()
         ));
     }
 
@@ -77,7 +77,7 @@ final class ActionCollection extends AbstractCollection
     {
         return self::init(array_filter(
             $this->items,
-            static fn(ActionDto $action): bool => $action->isBatchAction()
+            static fn (ActionDto $action): bool => $action->isBatchAction()
         ));
     }
 
@@ -85,7 +85,7 @@ final class ActionCollection extends AbstractCollection
     {
         return self::init(array_filter(
             $this->items,
-            static fn(ActionDto $action): bool => $action->isFormAction()
+            static fn (ActionDto $action): bool => $action->isFormAction()
         ));
     }
 
@@ -93,7 +93,7 @@ final class ActionCollection extends AbstractCollection
     {
         return self::init(array_filter(
             $this->items,
-            static fn(ActionDto $action): bool => $action->isShowAction()
+            static fn (ActionDto $action): bool => $action->isShowAction()
         ));
     }
 
@@ -101,7 +101,7 @@ final class ActionCollection extends AbstractCollection
     {
         return self::init(array_filter(
             $this->items,
-            static fn(ActionDto $action): bool => $action->isFilterAction()
+            static fn (ActionDto $action): bool => $action->isFilterAction()
         ));
     }
 

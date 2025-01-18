@@ -1,5 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
+/*
+ * This file is part of the AimAdmin package.
+ *
+ * (c) CodeCoz <contact@codecoz.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace CodeCoz\AimAdmin\Guard;
 
 use Illuminate\Contracts\Auth\Authenticatable;
@@ -7,6 +18,12 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+
+/**
+ * This is admin gurard class used for authentication
+ *
+ * @author Muhammad Abdullah Ibne Masud <abdullah.masud@banglalink.net>
+ */
 
 class AimGuard implements Guard
 {

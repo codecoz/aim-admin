@@ -24,12 +24,12 @@ class AimAdminCommand extends Command
     protected $description = 'Aim Admin Make Command';
 
     // Constants for the types
-    const TYPE_CONTROLLER = 'Controller';
-    const TYPE_REPOSITORY = 'Repository';
-    const TYPE_SERVICE = 'Service';
-    const TYPE_Request = 'Request';
-    const TYPE_ALL = 'All';
-    const TYPE_ROUTE = 'Route';
+    public const TYPE_CONTROLLER = 'Controller';
+    public const TYPE_REPOSITORY = 'Repository';
+    public const TYPE_SERVICE = 'Service';
+    public const TYPE_Request = 'Request';
+    public const TYPE_ALL = 'All';
+    public const TYPE_ROUTE = 'Route';
 
     /**
      * Execute the console command.

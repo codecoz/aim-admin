@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace CodeCoz\AimAdmin\MenuBuilder;
 
@@ -9,7 +11,6 @@ namespace CodeCoz\AimAdmin\MenuBuilder;
  */
 class MenuItemHelper
 {
-
     /**
      * Check if a menu item is a header.
      *

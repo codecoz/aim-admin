@@ -33,7 +33,7 @@ class {{ class }} extends AbstractAimAdminController
         ];
     }
 
-    public function configureForm()
+    public function configureForm(): void
     {
         $fields = [
             IdField::init('id'),

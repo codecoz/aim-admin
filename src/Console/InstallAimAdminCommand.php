@@ -38,8 +38,8 @@ class InstallAimAdminCommand extends Command
 
         self::makeFolders();
         $this->info('Contracts Folders have been created.');
-//      self::replacePackageJson();
-//      $this->info('Package.json has been replaced.');
+        //      self::replacePackageJson();
+        //      $this->info('Package.json has been replaced.');
         self::updatePackages();
         $this->info('package.json has been updated.');
         self::updateAimAdminAssets();
@@ -66,7 +66,7 @@ class InstallAimAdminCommand extends Command
      */
     protected static function makeFolders(): void
     {
-        tap(new Filesystem, function ($filesystem) {
+        tap(new Filesystem(), function ($filesystem) {
 
             $contractsServicesPath = app_path('Contracts/Services');
             if (!$filesystem->isDirectory($contractsServicesPath)) {
@@ -114,7 +114,7 @@ class InstallAimAdminCommand extends Command
      */
     protected static function replacePackageJson(): void
     {
-        $filesystem = new Filesystem;
+        $filesystem = new Filesystem();
 
         $destinationPath = base_path('package.json');
         if ($filesystem->exists($destinationPath)) {
@@ -229,7 +229,7 @@ class InstallAimAdminCommand extends Command
             mkdir($directory, 0755, true);
         }
 
-        $filesystem = new Filesystem;
+        $filesystem = new Filesystem();
 
         collect($filesystem->allFiles(base_path('vendor/codecoz/aim-admin/src/stubs/app/Models')))
             ->each(function (SplFileInfo $file) use ($filesystem) {

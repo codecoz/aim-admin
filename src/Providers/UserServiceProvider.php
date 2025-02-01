@@ -42,7 +42,7 @@ class UserServiceProvider extends ServiceProvider
             return new AimAdminUserProviderDriver();
         });
 
-//      Overriding the default users driver
+        //      Overriding the default users driver
         config([
             'auth.providers.users.driver' => env('USER_PROVIDER_DRIVER', 'AimAdminUserProviderDriver')
         ]);
@@ -59,10 +59,11 @@ class UserServiceProvider extends ServiceProvider
             return new AimGuard(
                 Auth::createUserProvider('users'),
                 $app['request'],
-                $app['session.store']);
+                $app['session.store']
+            );
         });
 
-//      Overriding the default guard configuration
+        //      Overriding the default guard configuration
         config([
             'auth.guards.web.driver' => env('DEFAULT_GUARD', 'AimAdminGuard')
         ]);

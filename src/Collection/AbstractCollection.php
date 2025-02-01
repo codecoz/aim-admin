@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Aim Admin package.
@@ -11,7 +13,6 @@
 
 namespace CodeCoz\AimAdmin\Collection;
 
-
 /**
  * This class is a collection abstract class abstract.
  *
@@ -21,7 +22,7 @@ abstract class AbstractCollection implements \ArrayAccess, \Countable, \Iterator
 {
     protected array $items;
 
-    abstract function offsetGet(mixed $offset): mixed;
+    abstract public function offsetGet(mixed $offset): mixed;
 
     public function isEmpty(): bool
     {

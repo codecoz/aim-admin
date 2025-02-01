@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /*
  * This file is part of the AimAdmin package.
@@ -25,10 +27,10 @@ use CodeCoz\AimAdmin\Field\IdField;
  */
 abstract class AbstractForm
 {
-    const STAT_NEW = 'new';
-    const STAT_EDIT = 'edit';
-    const STAT_NEW_SUBMIT = 'new_submit';
-    const STAT_EDIT_SUBMIT = 'edit_submit';
+    public const STAT_NEW = 'new';
+    public const STAT_EDIT = 'edit';
+    public const STAT_NEW_SUBMIT = 'new_submit';
+    public const STAT_EDIT_SUBMIT = 'edit_submit';
     private $formStat;
     private string $actionUrl;
     private string $name;
@@ -50,30 +52,31 @@ abstract class AbstractForm
         return $this;
     }
 
-    public function addField($field)
+    public function addField($field): static
     {
         $this->fields->add($field);
+        return $this;
     }
 
-    function getFields(): FormFieldCollection
+    public function getFields(): FormFieldCollection
     {
         return $this->fields;
     }
 
-    public function setFormHandler(CrudFormHandlerInterface $handler)
+    public function setFormHandler(CrudFormHandlerInterface $handler): static
     {
         $this->handler = $handler;
         return $this;
     }
 
-    public function saveData(array $data)
+    public function saveData(array $data): static
     {
 
         $this->data = $this->handler->saveFormData($data);
         return $this;
     }
 
-    public function setName(string $name)
+    public function setName(string $name): static
     {
         $this->name = $name;
         return $this;
@@ -84,7 +87,7 @@ abstract class AbstractForm
         return $this->name;
     }
 
-    public function setActionUrl(string $url)
+    public function setActionUrl(string $url): static
     {
         $this->actionUrl = $url;
         return $this;
@@ -95,7 +98,7 @@ abstract class AbstractForm
         return $this->actionUrl;
     }
 
-    public function setCssClass(string $cssClass)
+    public function setCssClass(string $cssClass): static
     {
         $this->cssClass .= ' ' . $cssClass;
         return $this;
@@ -115,7 +118,7 @@ abstract class AbstractForm
         return $html;
     }
 
-    public function setAttributes(array $attributes)
+    public function setAttributes(array $attributes): static
     {
         $this->attributes = \array_merge($this->attributes, $attributes);
         return $this;
@@ -126,7 +129,7 @@ abstract class AbstractForm
         return $this->attributes;
     }
 
-    public function setMethod(string $method)
+    public function setMethod(string $method): static
     {
         $this->method = $method;
         return $this;
@@ -192,7 +195,7 @@ abstract class AbstractForm
         return $this;
     }
 
-    public function getData()
+    public function getData(): mixed
     {
         return $this->data;
     }
@@ -214,7 +217,7 @@ abstract class AbstractForm
         return (self::STAT_EDIT === $this->formStat);
     }
 
-    public function setTitle(string $title): self
+    public function setTitle(string $title): static
     {
         $this->title = $title;
         return $this;

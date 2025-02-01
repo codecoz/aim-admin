@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Aim Admin package.
@@ -21,7 +23,6 @@ use CodeCoz\AimAdmin\Field\Field;
  */
 final class FormFieldCollection extends AbstractCollection
 {
-
     private function __construct(iterable $fields)
     {
         $this->items = $this->processFields($fields);

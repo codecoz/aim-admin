@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Aim Admin package.
@@ -10,7 +12,6 @@
  */
 
 namespace CodeCoz\AimAdmin\Dto\CrudBoard;
-
 
 use CodeCoz\AimAdmin\Support\OptionValueStore;
 
@@ -37,8 +38,8 @@ abstract class AbstractHtmlElementDto
     // these are actions that can be applied to filter
     public const TYPE_FILTER = 'filter';
 
-    const INPUT_TYPE_HIDDEN = 'hidden';
-    const INPUT_TYPE_FILE = 'file';
+    public const INPUT_TYPE_HIDDEN = 'hidden';
+    public const INPUT_TYPE_FILE = 'file';
 
     public const GRID_DELETE_ACTION = 'grid-delete';
 

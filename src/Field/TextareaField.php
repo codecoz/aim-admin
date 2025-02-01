@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /*
  * This file is part of the AimAdmin package.
@@ -11,9 +13,7 @@
 
 namespace CodeCoz\AimAdmin\Field;
 
-
 use CodeCoz\AimAdmin\Contracts\Field\FieldInterface;
-
 
 /**
  * This class is for creating text field .
@@ -22,11 +22,10 @@ use CodeCoz\AimAdmin\Contracts\Field\FieldInterface;
  */
 final class TextareaField implements FieldInterface
 {
-    public final const ROW = 'rows';
-    public final const COL = 'cols';
-    private static array $defaultParams = [self::ROW => 2, self::COL => null];
-
     use FormFieldTrait;
+    final public const ROW = 'rows';
+    final public const COL = 'cols';
+    private static array $defaultParams = [self::ROW => 2, self::COL => null];
 
     public static function init(string $name, ?string $label = null, ...$params): self
     {

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /*
  * This file is part of the AimAdmin package.
@@ -21,65 +23,64 @@ class CrudShow implements CrudShowInterface
     private ActionCollection $actions;
     private ?string $title = null;
 
-    private function __construct( array $fields, private \ArrayAccess $record)
+    private function __construct(array $fields, private \ArrayAccess $record)
     {
-       $this->addFields($fields)
-       ->prepareRecord($record);
+        $this->addFields($fields)
+        ->prepareRecord($record);
 
     }
 
     public static function init(array $fields, \ArrayAccess $record)
     {
-         return new self($fields,$record);
+        return new self($fields, $record);
     }
 
     public function addFields($fields)
     {
-      $this->fields =  FieldCollection::init($fields);
-      return $this;
+        $this->fields =  FieldCollection::init($fields);
+        return $this;
     }
 
-   public function addActions(array $actions=[])
-   {
-      $dtos = [];
-      foreach($actions as $name => $action){
-       $dtos[$name] = $action->getDto();
-      }
-      $this->actions = ActionCollection::init($dtos);
-      return $this;
-   }
+    public function addActions(array $actions = [])
+    {
+        $dtos = [];
+        foreach ($actions as $name => $action) {
+            $dtos[$name] = $action->getDto();
+        }
+        $this->actions = ActionCollection::init($dtos);
+        return $this;
+    }
 
-   public function getActions() : ActionCollection
-   {
-     return $this->actions;
-   }
+    public function getActions(): ActionCollection
+    {
+        return $this->actions;
+    }
 
-   public function getFields(): FieldCollection
-   {
-     return $this->fields;
-   }
+    public function getFields(): FieldCollection
+    {
+        return $this->fields;
+    }
 
-   private function prepareRecord($record)
-   {
-      foreach($this->fields as $name=>&$field)
-      {
-         $field->setValue($record[$name]);
-      }
-   }
+    private function prepareRecord($record)
+    {
+        foreach ($this->fields as $name => &$field) {
+            $field->setValue($record[$name]);
+        }
+    }
 
-   public function getRecord() : \ArrayAccess
-   {
-      return $this->record;
-   }
+    public function getRecord(): \ArrayAccess
+    {
+        return $this->record;
+    }
 
-   public function setTitle(string $title) : self
-   {
-      $this->title = $title;
-      return $this;
-   }
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
+        return $this;
+    }
 
-   public function getTitle() : ?string
-   {
-      return $this->title;
-   }
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
 }

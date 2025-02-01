@@ -3,10 +3,10 @@
     <div class="card">
         <div class="card-header">
             <h5 class="card-title">
-                @if($show->getTitle()) 
-                {{ $show->getTitle() }}
+                @if($show->getTitle())
+                    {{ $show->getTitle() }}
                 @else
-                {{ $attributes['title']}}
+                    {{ $attributes['title']}}
                 @endif
             </h5>
         </div>
@@ -21,8 +21,11 @@
                                 @php
                                     $value = $field->getValue() ;
                                     $record = $show->getRecord();
+                                    if($formaterFunc = $field->getFormatValueCallable()){
+                                    $value = $formaterFunc($value,$record);
+                                    }
                                 @endphp
-                                <x-dynamic-component :component="$component" :$value :$record />
+                                <x-dynamic-component :component="$component" :$value :$record/>
                             @else
                                 {{$field->getValue()}}
                             @endif

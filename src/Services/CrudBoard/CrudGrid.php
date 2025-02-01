@@ -74,7 +74,7 @@ final class CrudGrid implements CrudGridInterface
         return $this->filter;
     }
 
-    function getGridDataLoader(): CrudGridLoaderInterface
+    public function getGridDataLoader(): CrudGridLoaderInterface
     {
         return $this->gridDataLoader;
     }

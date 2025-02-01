@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /*
  * This file is part of the Aim Admin package.
@@ -20,7 +22,6 @@ use CodeCoz\AimAdmin\Contracts\Service\CrudBoard\CrudGridInterface;
  */
 class CrudGrid extends AbstractAimAdminComponent
 {
-
     public CrudGridInterface $grid;
 
     /**

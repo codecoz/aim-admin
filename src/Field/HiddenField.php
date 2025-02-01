@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /*
  * This file is part of the AimAdmin package.
@@ -11,9 +13,7 @@
 
 namespace CodeCoz\AimAdmin\Field;
 
-
 use CodeCoz\AimAdmin\Contracts\Field\FieldInterface;
-
 
 /**
  * This class is for creating text field .
@@ -24,7 +24,7 @@ final class HiddenField implements FieldInterface
 {
     use FormFieldTrait;
 
-    public static function init(string $name, ?string $label = null, ...$params) :self
+    public static function init(string $name, ?string $label = null, ...$params): self
     {
         $value = $params[0] ?? ($params['value'] ?? null);
         return (new self())

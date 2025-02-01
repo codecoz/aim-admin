@@ -6,7 +6,7 @@ use Illuminate\Support\Str;
 
 class Helper
 {
-    static function fontAwesomeIcons(): array
+    public static function fontAwesomeIcons(): array
     {
         // FontAwesome Icons Array
         return [
@@ -1404,7 +1404,7 @@ class Helper
         ];
     }
 
-    static function generateSlug(string $text): string
+    public static function generateSlug(string $text): string
     {
         // Pre-process text to handle various whitespace issues:
         $string = trim($text); // Remove whitespace from both sides of the string
@@ -1416,22 +1416,22 @@ class Helper
         return str_replace('/-', '/', $string);
     }
 
-    static function isValidEmail(string $email): bool
+    public static function isValidEmail(string $email): bool
     {
         return (bool)filter_var($email, FILTER_VALIDATE_EMAIL);
     }
 
-    static function getAttribute($key)
+    public static function getAttribute($key)
     {
         return request()->attributes->get($key);
     }
 
-    static function setAttribute($key, $value): void
+    public static function setAttribute($key, $value): void
     {
         request()->attributes->set($key, $value);
     }
 
-    static function requiredPackages(): array
+    public static function requiredPackages(): array
     {
         return [
             "@fortawesome/fontawesome-free" => "~6.5.2",
@@ -1448,12 +1448,12 @@ class Helper
         ];
     }
 
-    static function badge($badge, $class = 'bg-info'): string
+    public static function badge($badge, $class = 'bg-info'): string
     {
         return '<span class="badge ' . $class . '">' . $badge . '</span>';
     }
 
-    static function formatPhoneNumber($phone): string
+    public static function formatPhoneNumber($phone): string
     {
         // Remove any non-numeric characters
         $phone = preg_replace('/\D/', '', $phone);
@@ -1471,4 +1471,3 @@ class Helper
     }
 
 }
-

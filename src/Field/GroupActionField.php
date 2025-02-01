@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 /*
  * This file is part of the AimAdmin package.
@@ -11,11 +13,10 @@
 
 namespace CodeCoz\AimAdmin\Field;
 
-use function Symfony\Component\String\u;
-
 use CodeCoz\AimAdmin\Collection\ActionCollection;
 use CodeCoz\AimAdmin\Dto\CrudBoard\ActionDto;
 
+use function Symfony\Component\String\u;
 
 /**
  * This class is for group button creation in crudboard  .

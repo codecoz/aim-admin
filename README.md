@@ -13,8 +13,10 @@
 # AIM Admin 🎉
 <br>
 A comprehensive Laravel package designed to simplify admin tasks and develop enterprise web applications. With a robust, flexible, and feature-rich admin dashboard, it promotes best coding practices, following SOLID principles for enhanced code readability, maintainability, and extensibility.
-
 <br>
+<br>
+
+[Demo](https://aimadmin-demo.codecoz.com/login)
 
 ##
 **Boost Laravel Development with Aim Admin**

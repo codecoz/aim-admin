@@ -25,6 +25,9 @@ import "./modules/buttonloader";
 //Modal Loader
 import "./modules/modal";
 
+//Summernote
+import "./modules/summernote";
+
 //Ajax request
 import "./modules/ajaxrequest";
 

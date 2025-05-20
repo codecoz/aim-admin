@@ -216,4 +216,10 @@ trait FormFieldTrait
         return $this;
     }
 
+    public function asTextEditor(): static
+    {
+        $this->dto->setCssClass($this->dto->getCssClass() . ' editor');
+        return $this;
+    }
+
 }

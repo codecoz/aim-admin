@@ -32,7 +32,7 @@ class GridPaginator
     public function paginate(Collection $data, $options = []): LengthAwarePaginator
     {
         $page = Paginator::resolveCurrentPage();
-        return new LengthAwarePaginator($data->forPage($page, $this->recordPerPage), $data->count(), $this->recordPerPage, $page, $options);
+        return new LengthAwarePaginator($data->forPage($page, $this->recordPerPage)->values(), $data->count(), $this->recordPerPage, $page, $options);
     }
 
     public function paginateQuery(Builder $queryBuilder): LengthAwarePaginator
